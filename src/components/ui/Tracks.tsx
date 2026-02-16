@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Link from 'next/link';
 import { Cpu, Bot, Shield, ArrowUpRight } from 'lucide-react';
 
 const tracks = [
@@ -10,246 +11,120 @@ const tracks = [
     title: 'Artificial Intelligence',
     num: '01',
     description:
-      'Build perception, decision-making, and path-planning systems that power autonomous vehicles. From computer vision to reinforcement learning.',
-    icon: <Cpu size={22} />,
-    color: 'var(--track-ai)',
-    tags: ['Computer Vision', 'Deep Learning', 'Path Planning'],
+      'Architect the neural cores of autonomy. Build perception, decision-making, and path-planning systems that process the world in real-time.',
+    icon: <Cpu size={24} />,
+    color: 'rgb(235, 107, 38)',
+    tags: ['Computer Vision', 'Reinforcement Learning', 'SLAM'],
+    href: '/tracks/ai',
   },
   {
     id: 'robotics',
-    title: 'Robotics',
+    title: 'Robotics & Control',
     num: '02',
     description:
-      'Design hardware-software integration, sensor fusion, and control systems. Bridge the physical world with intelligent automation.',
-    icon: <Bot size={22} />,
-    color: 'var(--track-robotics)',
-    tags: ['Sensor Fusion', 'Control Systems', 'SLAM'],
+      'Where the code meets the chassis. Bridge hardware-software integration, sensor fusion, and high-fidelity control systems.',
+    icon: <Bot size={24} />,
+    color: 'rgb(235, 107, 38)',
+    tags: ['Sensor Fusion', 'Actuation', 'Hardware-in-loop'],
+    href: '/tracks/robotics',
   },
   {
     id: 'cybersecurity',
     title: 'Cybersecurity',
     num: '03',
     description:
-      'Secure connected vehicles from attacks. Build resilient V2X communication protocols and intrusion detection for autonomous fleets.',
-    icon: <Shield size={22} />,
-    color: 'var(--track-cyber)',
-    tags: ['V2X Security', 'Intrusion Detection', 'Secure OTA'],
+      'Defend the connected fleet. Secure V2X protocols and develop intrusion detection systems for the next generation of autonomous mobility.',
+    icon: <Shield size={24} />,
+    color: 'rgb(235, 107, 38)',
+    tags: ['V2X Security', 'Encryption', 'Fleet Defense'],
+    href: '/tracks/cybersecurity',
   },
 ];
 
 export default function Tracks() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: true, margin: '-10%' });
 
   return (
-    <section
-      id="tracks"
-      ref={ref}
-      className="section"
-      style={{ position: 'relative' }}
-    >
-      {/* Header row */}
-      <div className="tracks-header">
-        <div>
+    <section id="tracks" ref={ref} className="relative py-32 md:py-64 overflow-hidden">
+      {/* Background Decorative Element */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[rgb(235,107,38)]/[0.02] rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 max-w-[1400px]">
+
+        {/* ── Header ── */}
+        <div className="mb-20 md:mb-32">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -10 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              marginBottom: '1rem',
-            }}
+            className="flex items-center gap-4 mb-6"
           >
-            <div style={{ width: '40px', height: '2px', background: 'rgb(235,107,38)' }} />
-            <span
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.7rem',
-                fontWeight: 500,
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: 'var(--fg-muted)',
-              }}
-            >
-              Challenge Tracks
+            <div className="w-12 h-px bg-[rgb(235,107,38)]" />
+            <span className="font-mono text-xs text-gray-500 tracking-[0.4em] uppercase">
+              Mission Selection
             </span>
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
-              fontWeight: 600,
-              lineHeight: 1.15,
-              letterSpacing: '-0.02em',
-              color: '#fff',
-            }}
+            transition={{ duration: 0.8 }}
+            className="font-heading text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none"
           >
-            Choose Your{' '}
-            <span style={{ color: 'rgba(235,107,38,0.7)', fontWeight: 400 }}>Lane</span>
+            Choose Your <span className="text-[rgb(235,107,38)]">Lane.</span>
           </motion.h2>
         </div>
-      </div>
 
-      {/* Cards grid */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-        className="tracks-grid"
-      >
-        {tracks.map((track, i) => (
-          <motion.div
-            key={track.id}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{
-              duration: 0.7,
-              delay: 0.3 + i * 0.1,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="glass-card track-card"
-            style={{
-              padding: '2rem',
-              position: 'relative',
-              overflow: 'hidden',
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget;
-              el.style.borderColor = `${track.color}33`;
-              el.style.background = `${track.color}05`;
-              el.style.transform = 'translateY(-3px)';
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget;
-              el.style.borderColor = 'var(--border)';
-              el.style.background = 'rgba(255,255,255,0.02)';
-              el.style.transform = 'translateY(0)';
-            }}
-          >
-            {/* Track number + icon */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginBottom: '1.5rem',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                }}
+        {/* ── Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {tracks.map((track, i) => (
+            <Link key={track.id} href={track.href} className="group block">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.1, duration: 0.8 }}
+                className="relative h-full p-8 md:p-12 bg-white/[0.02] border border-white/5 group-hover:border-[rgb(235,107,38)]/30 transition-all duration-500 overflow-hidden"
               >
-                <div
-                  style={{
-                    color: track.color,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '10px',
-                    background: `${track.color}10`,
-                    border: `1px solid ${track.color}20`,
-                  }}
-                >
-                  {track.icon}
-                </div>
-                <div>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '0.6rem',
-                      fontWeight: 600,
-                      letterSpacing: '0.15em',
-                      textTransform: 'uppercase',
-                      color: track.color,
-                      marginBottom: '0.1rem',
-                    }}
-                  >
-                    Track {track.num}
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-heading)',
-                      fontSize: '1.1rem',
-                      fontWeight: 600,
-                      color: '#fff',
-                    }}
-                  >
-                    {track.title}
-                  </div>
-                </div>
-              </div>
-              <ArrowUpRight
-                size={16}
-                color="rgba(255,255,255,0.15)"
-                style={{ flexShrink: 0 }}
-              />
-            </div>
+                {/* Hover Fill Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[rgb(235,107,38)]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            {/* Description */}
-            <p
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.85rem',
-                fontWeight: 300,
-                color: 'var(--fg-muted)',
-                lineHeight: 1.7,
-                marginBottom: '1.5rem',
-              }}
-            >
-              {track.description}
-            </p>
-
-            {/* Tags */}
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              {track.tags.map((tag) => (
-                <span
-                  key={tag}
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.65rem',
-                    fontWeight: 400,
-                    padding: '0.25rem 0.7rem',
-                    borderRadius: '6px',
-                    border: '1px solid rgba(255,255,255,0.06)',
-                    color: 'var(--fg-muted)',
-                    letterSpacing: '0.03em',
-                  }}
-                >
-                  {tag}
+                {/* Track Number Background */}
+                <span className="absolute -right-4 -top-4 font-heading text-9xl font-bold text-white/[0.02] group-hover:text-[rgb(235,107,38)]/[0.04] transition-colors duration-500 select-none">
+                  {track.num}
                 </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
 
-      <style jsx global>{`
-        .tracks-header {
-          margin-bottom: 2.5rem;
-        }
-        .tracks-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1rem;
-        }
-        @media (min-width: 768px) {
-          .tracks-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-          }
-        }
-      `}</style>
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex justify-between items-start mb-12">
+                    <div className="p-3 bg-white/5 border border-white/10 text-[rgb(235,107,38)] group-hover:scale-110 transition-transform duration-500">
+                      {track.icon}
+                    </div>
+                    <ArrowUpRight className="text-gray-700 group-hover:text-[rgb(235,107,38)] transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                    {track.title}
+                  </h3>
+
+                  <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-8 flex-grow">
+                    {track.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
+                    {track.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono text-[9px] md:text-[10px] text-gray-600 uppercase tracking-widest px-2 py-1 border border-white/5"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

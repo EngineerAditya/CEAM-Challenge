@@ -4,186 +4,120 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 
-const sponsors = [
+const partners = [
   {
     name: 'ARTPARK',
     logo: '/sponsor-logo/ARTPARK primary logo.png',
+    role: 'Hardware & Knowledge Partner',
   },
   {
     name: 'Harman',
     logo: '/sponsor-logo/Harman Primary Corporate Logo CMYK.png',
+    role: 'Industry Partner',
   },
 ];
 
 export default function Sponsors() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: true, margin: '-10%' });
 
   return (
     <section
       ref={ref}
-      className="section"
-      style={{
-        position: 'relative',
-        textAlign: 'center',
-        overflow: 'hidden',
-      }}
+      className="relative py-32 md:py-64 bg-[#050505] overflow-hidden"
     >
-      {/* Section label */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-          marginBottom: '1.5rem',
-          justifyContent: 'center',
-        }}
-      >
-        <div style={{ width: '40px', height: '1px', background: 'rgba(235,107,38,0.25)' }} />
-        <span
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '0.7rem',
-            fontWeight: 500,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: 'var(--fg-muted)',
-          }}
-        >
-          Our Partners
-        </span>
-        <div style={{ width: '40px', height: '1px', background: 'rgba(235,107,38,0.25)' }} />
-      </motion.div>
+      <div className="container mx-auto px-6 max-w-[1400px]">
 
-      <motion.h2
-        initial={{ opacity: 0, y: 40 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          fontFamily: 'var(--font-heading)',
-          fontSize: 'clamp(1.75rem, 5vw, 3rem)',
-          fontWeight: 600,
-          lineHeight: 1.2,
-          letterSpacing: '-0.02em',
-          color: '#fff',
-          marginBottom: '3rem',
-        }}
-      >
-        Sponsors &{' '}
-        <span style={{ color: 'rgba(235,107,38,0.6)', fontWeight: 300 }}>Partners</span>
-      </motion.h2>
-
-      {/* Sponsor logos */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 'clamp(2rem, 5vw, 4rem)',
-          flexWrap: 'wrap',
-          marginBottom: '3rem',
-        }}
-      >
-        {sponsors.map((sponsor, i) => (
+        {/* ── Header Area ── */}
+        <div className="flex flex-col items-center text-center mb-24 md:mb-40">
           <motion.div
-            key={sponsor.name}
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{
-              duration: 0.8,
-              delay: 0.3 + i * 0.15,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="glass-card"
-            style={{
-              padding: '2rem 2.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              minWidth: '220px',
-              cursor: 'default',
-            }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            className="flex items-center gap-4 mb-8"
           >
-            <Image
-              src={sponsor.logo}
-              alt={sponsor.name}
-              width={160}
-              height={60}
-              style={{
-                objectFit: 'contain',
-                filter: 'brightness(0) invert(1)',
-                opacity: 0.8,
-                transition: 'opacity 0.4s cubic-bezier(0.4,0,0.2,1)',
-                maxWidth: '160px',
-                height: 'auto',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLImageElement).style.opacity = '1';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLImageElement).style.opacity = '0.8';
-              }}
-            />
+            <div className="w-12 h-px bg-[rgb(235,107,38)]" />
+            <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-[0.4em] uppercase">
+              Strategic Alliance
+            </span>
+            <div className="w-12 h-px bg-[rgb(235,107,38)]" />
           </motion.div>
-        ))}
-      </motion.div>
 
-      {/* More sponsors coming soon note */}
-      <motion.p
-        initial={{ opacity: 0, y: 15 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.8rem',
-          fontWeight: 300,
-          color: 'var(--fg-muted)',
-          marginBottom: '2rem',
-        }}
-      >
-        More partners to be announced soon.
-      </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-none"
+          >
+            Sponsors & <br />
+            <span className="text-white/20">Partners.</span>
+          </motion.h2>
+        </div>
 
-      {/* Interested CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <a
-          href="mailto:ceam@manipal.edu?subject=Sponsorship%20Inquiry"
-          style={{
-            textDecoration: 'none',
-            fontFamily: 'var(--font-body)',
-            fontSize: '0.75rem',
-            fontWeight: 400,
-            color: 'var(--fg-muted)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            padding: '0.625rem 1.5rem',
-            borderRadius: '9999px',
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase',
-            transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
-            display: 'inline-block',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(235,107,38,0.3)';
-            e.currentTarget.style.color = '#fff';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
-            e.currentTarget.style.color = 'var(--fg-muted)';
-          }}
+        {/* ── Partners Grid (Blueprint Style) ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 mb-20">
+          {partners.map((partner, i) => (
+            <motion.div
+              key={partner.name}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: i * 0.2 }}
+              className="group relative bg-[#050505] p-16 md:p-24 flex flex-col items-center justify-center overflow-hidden"
+            >
+              {/* Subtle background glow on hover */}
+              <div className="absolute inset-0 bg-[rgb(235,107,38)]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+              <div className="relative z-10 flex flex-col items-center gap-12">
+                <div className="relative h-20 w-48 md:h-24 md:w-64">
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    fill
+                    className="object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100"
+                  />
+                </div>
+
+                <div className="flex flex-col items-center gap-2">
+                  <span className="font-mono text-[10px] text-gray-600 tracking-[0.3em] uppercase group-hover:text-[rgb(235,107,38)] transition-colors">
+                    {partner.role}
+                  </span>
+                  <div className="w-0 h-px bg-[rgb(235,107,38)] group-hover:w-full transition-all duration-500" />
+                </div>
+              </div>
+
+              {/* Technical corner accents */}
+              <div className="absolute top-4 right-4 w-1 h-1 bg-white/10 group-hover:bg-[rgb(235,107,38)]" />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── CTA / Information Footer ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.6 }}
+          className="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12"
         >
-          Interested in Sponsoring?
-        </a>
-      </motion.div>
+          <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+            More partners to be decrypted soon // 2026_ALLIANCE
+          </span>
+
+          <a
+            href="mailto:ceam@manipal.edu?subject=Sponsorship%20Inquiry"
+            className="group relative px-8 py-4 border border-white/10 font-mono text-[10px] text-white uppercase tracking-[0.2em] overflow-hidden hover:border-[rgb(235,107,38)]/50 transition-colors"
+          >
+            <div className="absolute inset-0 bg-[rgb(235,107,38)] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            <span className="relative z-10 group-hover:text-black transition-colors">
+              Interested in Sponsoring?
+            </span>
+          </a>
+        </motion.div>
+
+      </div>
+
+      {/* Decorative background text */}
+      <div className="absolute bottom-10 -right-20 pointer-events-none select-none opacity-[0.02] font-black text-[15vw] text-white rotate-90 uppercase">
+        Alliance
+      </div>
     </section>
   );
 }

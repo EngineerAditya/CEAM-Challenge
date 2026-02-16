@@ -9,19 +9,30 @@ import Footer from "@/components/ui/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-[#050505]">
       <Hero />
-      <SectionDivider variant="gradient" />
+
+      {/* Subtle transition into About */}
+      <SectionDivider variant="line" spacing="none" />
       <About />
-      <SectionDivider variant="dots" />
+
+      {/* Large breathing room before content-heavy sections */}
+      <SectionDivider variant="dots" spacing="lg" />
       <Tracks />
-      <SectionDivider variant="gradient" />
+
+      {/* Focus on the Deadline */}
+      <SectionDivider variant="gradient" spacing="lg" />
       <Countdown />
-      <SectionDivider variant="dots" />
+
+      {/* Clean break before the Curvy Road */}
+      <SectionDivider variant="dots" spacing="lg" />
       <Timeline />
-      <SectionDivider variant="gradient" />
+
+      {/* Final transition to Sponsors and Footer */}
+      <SectionDivider variant="gradient" spacing="lg" />
       <Sponsors />
-      <SectionDivider variant="line" />
+
+      <SectionDivider variant="line" spacing="md" />
       <Footer />
     </main>
   );
