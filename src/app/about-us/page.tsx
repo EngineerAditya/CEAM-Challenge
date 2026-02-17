@@ -8,14 +8,13 @@ import Image from 'next/image';
 
 const detection = [
   { name: 'Dr Sravani Vemulapalli', role: 'Centre Coordinator', photo: null },
-  { name: 'Dr S Ramasamy', role: 'Faculty', photo: '/team/Ramasamy.jpg' },
+  { name: 'Dr S Ramasamy', role: 'HOD - ECE Dept', photo: '/team/Ramasamy.jpg' },
   { name: 'Dr Ashish Sharma', role: 'Faculty', photo: '/team/Ashish.jpg' },
   { name: 'Dr R Sowmya', role: 'Faculty', photo: '/team/R sowmya.png' },
 ];
 
 const algorithms = [
   { name: 'Dr Megha Arakeri', role: 'Team Head', photo: '/team/Dr Megha.jpg' },
-  { name: 'Dr Raguru Jayakrishna', role: 'Faculty', photo: '/team/Raguru.jpg' },
   { name: 'Dr Vishnu Yarlagadda', role: 'Faculty', photo: '/team/Vishnu.jpg' },
 ];
 

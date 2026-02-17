@@ -100,7 +100,7 @@ export default function Footer() {
               Contact
             </div>
             <a
-              href="mailto:ceam@manipal.edu"
+              href="mailto:coeam.mitblr@manipal.edu"
               style={{
                 display: 'block',
                 textDecoration: 'none',
@@ -114,7 +114,7 @@ export default function Footer() {
               onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-muted)')}
             >
-              ceam@manipal.edu
+              coeam.mitblr@manipal.edu
             </a>
             <a
               href="/about-us"

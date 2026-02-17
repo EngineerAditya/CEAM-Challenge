@@ -9,11 +9,13 @@ const partners = [
     name: 'ARTPARK',
     logo: '/sponsor-logo/ARTPARK primary logo.png',
     role: 'Hardware & Knowledge Partner',
+    url: 'https://www.artpark.in/',
   },
   {
     name: 'Harman',
-    logo: '/sponsor-logo/Harman Primary Corporate Logo CMYK.png',
+    logo: '/sponsor-logo/Harman.svg',
     role: 'Industry Partner',
+    url: 'https://www.harman.com/',
   },
 ];
 
@@ -67,14 +69,19 @@ export default function Sponsors() {
               <div className="absolute inset-0 bg-[rgb(235,107,38)]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
               <div className="relative z-10 flex flex-col items-center gap-12">
-                <div className="relative h-20 w-48 md:h-24 md:w-64">
+                <a
+                  href={partner.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative h-24 w-56 md:h-32 md:w-80 group/logo"
+                >
                   <Image
                     src={partner.logo}
                     alt={partner.name}
                     fill
-                    className="object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100"
+                    className="object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100 group-hover/logo:scale-105"
                   />
-                </div>
+                </a>
 
                 <div className="flex flex-col items-center gap-2">
                   <span className="font-mono text-[10px] text-gray-600 tracking-[0.3em] uppercase group-hover:text-[rgb(235,107,38)] transition-colors">
@@ -102,7 +109,7 @@ export default function Sponsors() {
           </span>
 
           <a
-            href="mailto:ceam@manipal.edu?subject=Sponsorship%20Inquiry"
+            href="mailto:coeam.mitblr@manipal.edu?subject=Sponsorship%20Inquiry"
             className="group relative px-8 py-4 border border-white/10 font-mono text-[10px] text-white uppercase tracking-[0.2em] overflow-hidden hover:border-[rgb(235,107,38)]/50 transition-colors"
           >
             <div className="absolute inset-0 bg-[rgb(235,107,38)] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />

@@ -8,13 +8,13 @@ import { Cpu, Bot, Shield, ArrowUpRight } from 'lucide-react';
 const tracks = [
   {
     id: 'ai',
-    title: 'Artificial Intelligence',
+    title: 'Computer Vision',
     num: '01',
     description:
       'Architect the neural cores of autonomy. Build perception, decision-making, and path-planning systems that process the world in real-time.',
     icon: <Cpu size={24} />,
     color: 'rgb(235, 107, 38)',
-    tags: ['Computer Vision', 'Reinforcement Learning', 'SLAM'],
+    tags: ['Computer Vision', 'Algorithms', 'Machine Learning'],
     href: '/tracks/ai',
   },
   {
@@ -22,10 +22,10 @@ const tracks = [
     title: 'Robotics & Control',
     num: '02',
     description:
-      'Where the code meets the chassis. Bridge hardware-software integration, sensor fusion, and high-fidelity control systems.',
+      'Where the code meets the chassis. Bridge hardware-software integration, simulations, and high-fidelity control systems.',
     icon: <Bot size={24} />,
     color: 'rgb(235, 107, 38)',
-    tags: ['Sensor Fusion', 'Actuation', 'Hardware-in-loop'],
+    tags: ['Simulation', 'Actuation', 'Hardware-in-loop'],
     href: '/tracks/robotics',
   },
   {
