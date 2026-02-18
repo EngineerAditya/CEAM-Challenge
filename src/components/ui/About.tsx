@@ -81,13 +81,13 @@ export default function About() {
                 <div className="space-y-4">
                   <h4 className="font-mono text-xs text-white uppercase tracking-wider">The Vision</h4>
                   <p className="text-gray-500 text-sm md:text-base leading-relaxed">
-                    Bridging the gap between theoretical research and real-world deployment. We provide the hardware and the environment; you provide the intelligence.
+                    Bridging the gap between theoretical research and real-world deployment. We provide the hardware and the environment; you provide the solution to the challenge.
                   </p>
                 </div>
                 <div className="space-y-4">
                   <h4 className="font-mono text-xs text-white uppercase tracking-wider">The Collaboration</h4>
                   <p className="text-gray-500 text-sm md:text-base leading-relaxed">
-                    A joint initiative by the CEAM Research Lab and the Department of ECE, fostering a culture of innovation in intelligent transport.
+                    A joint initiative by the CEAM Research Lab (MIT Bengaluru's autonomous vehicle research centre) and the Department of ECE.
                   </p>
                 </div>
               </div>

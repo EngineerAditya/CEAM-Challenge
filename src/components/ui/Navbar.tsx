@@ -10,7 +10,6 @@ const navLinks = [
   { label: 'About', href: '/#about', num: '01' },
   { label: 'Tracks', href: '/#tracks', num: '02' },
   { label: 'Timeline', href: '/#timeline', num: '03' },
-  { label: 'Team', href: '/about-us', num: '04' },
 ];
 
 export default function Navbar() {
@@ -74,9 +73,11 @@ export default function Navbar() {
       >
         <div className="nav-container">
           <a href="/" className="nav-logo" onClick={(e) => handleNav(e, '/')}>
-            <span className="logo-text">
-              MAHE <span className="logo-accent">/</span> Mobility
-            </span>
+            <img
+              src="/manipal/manipal-logo.png"
+              alt="MAHE"
+              className="nav-logo-img"
+            />
           </a>
 
           <div className="nav-links-desktop">
@@ -193,27 +194,27 @@ export default function Navbar() {
 
       <style jsx global>{`
         :root {
-          --nav-height: 70px; /* Reduced height for sleekness */
-          --nav-bg-scrolled: rgba(5, 5, 5, 0.9); /* Slightly more opaque for contrast */
+          --nav-height: 90px; /* Increased height for larger logo */
+          --nav-bg-scrolled: rgba(5, 5, 5, 0.9);
           --nav-border-scrolled: rgba(255, 255, 255, 0.06);
         }
 
         .site-nav {
           position: fixed;
           top: 1rem;
-          /* Mobile-first: fixed margins */
+          /* Mobile-first: fixed */
           left: 1rem;
           right: 1rem;
           width: auto;
           transform: none; 
           z-index: 1000;
-          height: 60px;
+          height: 80px; /* Increased mobile height */
           display: flex;
           align-items: center;
           justify-content: center;
           border-radius: 9999px;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          background: rgba(5, 5, 5, 0.6);
+          background: rgba(5, 5, 5, 0.7);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
           border: 1px solid rgba(255, 255, 255, 0.04);
@@ -237,14 +238,9 @@ export default function Navbar() {
            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
         }
         
-        /* When menu is open, remove border radius/float to cover screen properly? 
-           Actually, overlay is separate. The nav itself should stay on top.
-           But if overlay is full screen 100vh, nav needs to blend in or sit on top.
-           Let's keep nav floating on top. */
-
         .nav-container {
           width: 100%;
-          padding: 0 1.5rem;
+          padding: 0 1.5rem; /* Increased padding */
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -258,20 +254,17 @@ export default function Navbar() {
           display: flex;
           align-items: center;
         }
-        
-        .logo-text {
-          font-family: var(--font-heading);
-          font-weight: 600;
-          font-size: 0.9rem;
-          letter-spacing: 0.08em;
-          color: #fff;
-          text-transform: uppercase;
-        }
 
-        .logo-accent {
-          color: rgb(235, 107, 38);
-          font-weight: 400;
-          margin: 0 0.15em;
+        .nav-logo-img {
+          height: 60px; /* Increased mobile logo size */
+          width: auto;
+          transition: opacity 0.3s;
+        }
+        
+        @media (min-width: 768px) {
+          .nav-logo-img {
+             height: 70px; /* Increased desktop logo size */
+          }
         }
 
         .nav-links-desktop {
@@ -283,7 +276,7 @@ export default function Navbar() {
         .nav-link-desktop {
           text-decoration: none;
           font-family: var(--font-body);
-          font-size: 0.75rem;
+          font-size: 0.75rem; /* Reduced text size */
           font-weight: 500;
           letter-spacing: 0.05em;
           text-transform: uppercase;
@@ -315,11 +308,11 @@ export default function Navbar() {
         .nav-cta-desktop {
           text-decoration: none;
           font-family: var(--font-body);
-          font-size: 0.7rem;
+          font-size: 0.7rem; /* Reduced cta text size */
           font-weight: 600;
           color: #050505;
           background: #fff;
-          padding: 0.45rem 1.1rem; /* Smaller pill */
+          padding: 0.5rem 1.2rem; /* Adjusted pill size */
           border-radius: 99px;
           text-transform: uppercase;
           letter-spacing: 0.05em;

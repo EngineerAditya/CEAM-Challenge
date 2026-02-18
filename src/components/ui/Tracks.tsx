@@ -109,6 +109,10 @@ export default function Tracks() {
                     {track.description}
                   </p>
 
+                  <span className="text-xs text-[rgb(235,107,38)] mt-0 mb-6 block font-medium flex items-center gap-2 group-hover:translate-x-2 transition-transform duration-300">
+                    Click to view more info &rarr;
+                  </span>
+
                   <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
                     {track.tags.map((tag) => (
                       <span

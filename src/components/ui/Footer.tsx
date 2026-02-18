@@ -116,23 +116,6 @@ export default function Footer() {
             >
               coeam.mitblr@manipal.edu
             </a>
-            <a
-              href="/about-us"
-              style={{
-                display: 'block',
-                textDecoration: 'none',
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.8rem',
-                fontWeight: 300,
-                color: 'var(--fg-muted)',
-                padding: '0.3rem 0',
-                transition: 'color 0.3s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-muted)')}
-            >
-              Meet the Team →
-            </a>
           </div>
         </div>
 
@@ -200,6 +183,6 @@ export default function Footer() {
           }
         }
       `}</style>
-    </footer>
+    </footer >
   );
 }

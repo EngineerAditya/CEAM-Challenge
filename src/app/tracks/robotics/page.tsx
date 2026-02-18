@@ -26,8 +26,13 @@ export default function RoboticsTrack() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-px bg-[rgb(235,107,38)]" />
-              <span className="font-mono text-[10px] md:text-xs text-[rgb(235,107,38)] tracking-[0.4em] uppercase font-bold">
-                Track_02 // Hardware Integration
+              <span className="font-mono text-[10px] md:text-xs text-[rgb(235,107,38)] tracking-[0.4em] uppercase font-bold flex items-center gap-3">
+                Track_02 in Collaboration with
+                <img
+                  src="/sponsor-logo/ARTPARK%20primary%20logo.png"
+                  alt="ARTPARK IISc"
+                  className="h-8 md:h-10 w-auto"
+                />
               </span>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] text-white mb-8">
