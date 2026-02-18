@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 
-const TARGET_DATE = new Date('2026-04-17T00:00:00+05:30').getTime();
+const TARGET_DATE = new Date('2026-04-01T00:00:00+05:30').getTime();
 
 function BigDigit({ value, label }: { value: string; label: string }) {
   return (
@@ -96,7 +96,7 @@ export default function Countdown() {
               </span>
             </div>
             <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none">
-              The Grand <br /> Finale.
+              Round <br /> 01.
             </h2>
           </motion.div>
 
@@ -107,7 +107,7 @@ export default function Countdown() {
             className="md:text-right font-mono text-[10px] md:text-xs text-gray-600 leading-relaxed uppercase"
           >
             Mission: MAHE Mobility 2026 <br />
-            Target: 17.04.2026 // 09:00 IST <br />
+            Target: 31.03.2026 // 23:59 IST <br />
             Status: Synchronizing clock cycles...
           </motion.div>
         </div>
@@ -138,10 +138,10 @@ export default function Countdown() {
             </p>
           </div>
           <div className="group space-y-4">
-            <span className="font-mono text-[10px] text-[rgb(235,107,38)] tracking-widest uppercase">Stage 02 // On-Site</span>
+            <span className="font-mono text-[10px] text-[rgb(235,107,38)] tracking-widest uppercase">Stage 02 // Offline</span>
             <h3 className="text-2xl md:text-4xl text-white font-semibold tracking-tight">Final Prototype Run</h3>
             <p className="text-gray-500 text-sm md:text-lg leading-relaxed max-w-md">
-              Deploy your intelligence on our custom-built track in the heart of MIT Bengaluru.
+              Shortlisted teams come to MIT Bengaluru to compete in the final round on 17th April.
             </p>
           </div>
         </motion.div>

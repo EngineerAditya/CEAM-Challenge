@@ -3,18 +3,19 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
-import { Cpu, Bot, Shield, ArrowUpRight } from 'lucide-react';
+import { Cpu, Bot, Shield, ArrowUpRight, Lock } from 'lucide-react';
+import { SHOW_TRACK_DETAILS } from '@/lib/constants';
 
 const tracks = [
   {
     id: 'ai',
-    title: 'Computer Vision',
+    title: 'AI in Mobility',
     num: '01',
     description:
-      'Architect the neural cores of autonomy. Build perception, decision-making, and path-planning systems that process the world in real-time.',
+      'Reimagine the connected cockpit. From network-aware routing to predictive safety, build the next generation of automotive experiences.',
     icon: <Cpu size={24} />,
     color: 'rgb(235, 107, 38)',
-    tags: ['Computer Vision', 'Algorithms', 'Machine Learning'],
+    tags: ['Network Optimization', 'Predictive Safety', 'Context Awareness'],
     href: '/tracks/ai',
   },
   {
@@ -77,16 +78,18 @@ export default function Tracks() {
 
         {/* ── Grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {tracks.map((track, i) => (
-            <Link key={track.id} href={track.href} className="group block">
+          {tracks.map((track, i) => {
+            const CardContent = (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.1, duration: 0.8 }}
                 className="relative h-full p-8 md:p-12 bg-white/[0.02] border border-white/5 group-hover:border-[rgb(235,107,38)]/30 transition-all duration-500 overflow-hidden"
               >
-                {/* Hover Fill Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[rgb(235,107,38)]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Hover Fill Effect - Only if details shown */}
+                {SHOW_TRACK_DETAILS && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-[rgb(235,107,38)]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                )}
 
                 {/* Track Number Background */}
                 <span className="absolute -right-4 -top-4 font-heading text-9xl font-bold text-white/[0.02] group-hover:text-[rgb(235,107,38)]/[0.04] transition-colors duration-500 select-none">
@@ -98,7 +101,11 @@ export default function Tracks() {
                     <div className="p-3 bg-white/5 border border-white/10 text-[rgb(235,107,38)] group-hover:scale-110 transition-transform duration-500">
                       {track.icon}
                     </div>
-                    <ArrowUpRight className="text-gray-700 group-hover:text-[rgb(235,107,38)] transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
+                    {SHOW_TRACK_DETAILS ? (
+                      <ArrowUpRight className="text-gray-700 group-hover:text-[rgb(235,107,38)] transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
+                    ) : (
+                      <Lock className="text-gray-700" size={20} />
+                    )}
                   </div>
 
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
@@ -109,8 +116,12 @@ export default function Tracks() {
                     {track.description}
                   </p>
 
-                  <span className="text-xs text-[rgb(235,107,38)] mt-0 mb-6 block font-medium flex items-center gap-2 group-hover:translate-x-2 transition-transform duration-300">
-                    Click to view more info &rarr;
+                  <span className={`text-xs ${SHOW_TRACK_DETAILS ? 'text-[rgb(235,107,38)] group-hover:translate-x-2' : 'text-gray-600'} mt-0 mb-6 block font-medium flex items-center gap-2 transition-transform duration-300`}>
+                    {SHOW_TRACK_DETAILS ? (
+                      <>Click to view more info &rarr;</>
+                    ) : (
+                      <>Will be revealed soon</>
+                    )}
                   </span>
 
                   <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
@@ -125,8 +136,18 @@ export default function Tracks() {
                   </div>
                 </div>
               </motion.div>
-            </Link>
-          ))}
+            );
+
+            return SHOW_TRACK_DETAILS ? (
+              <Link key={track.id} href={track.href} className="group block">
+                {CardContent}
+              </Link>
+            ) : (
+              <div key={track.id} className="group block cursor-default">
+                {CardContent}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -104,7 +104,7 @@ export default function Sponsors() {
           transition={{ delay: 0.6 }}
           className="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12"
         >
-          <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+          <span className="font-mono text-[15px] text-gray-500 uppercase tracking-widest">
             More partners to be decrypted soon // 2026_ALLIANCE
           </span>
 

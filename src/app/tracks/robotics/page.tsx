@@ -1,10 +1,34 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowLeft, Users, Activity, Lightbulb, Cpu } from 'lucide-react';
+import { ArrowLeft, Users, Activity, Lightbulb, Cpu, Lock } from 'lucide-react';
 import Link from 'next/link';
+import { SHOW_TRACK_DETAILS } from '@/lib/constants';
 
 export default function RoboticsTrack() {
+  if (!SHOW_TRACK_DETAILS) {
+    return (
+      <main className="bg-[#050505] min-h-screen text-white font-sans flex flex-col items-center justify-center p-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center max-w-lg"
+        >
+          <div className="mx-auto w-16 h-16 bg-[rgb(235,107,38)]/10 rounded-full flex items-center justify-center mb-6">
+            <Lock className="text-[rgb(235,107,38)]" size={32} />
+          </div>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 tracking-tighter">Content Locked</h1>
+          <p className="text-gray-400 mb-8 leading-relaxed">
+            The details for this track are currently under wraps. Please check back later when the mission parameters are revealed.
+          </p>
+          <Link href="/" className="inline-flex items-center gap-2 text-sm font-mono tracking-widest uppercase text-[rgb(235,107,38)] hover:text-white transition-colors">
+            <ArrowLeft size={16} /> Back to Home
+          </Link>
+        </motion.div>
+      </main>
+    );
+  }
+
   return (
     <main className="bg-[#050505] min-h-screen text-white font-sans selection:bg-[rgb(235,107,38)]/30">
 

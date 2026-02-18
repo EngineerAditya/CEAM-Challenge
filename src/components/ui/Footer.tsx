@@ -45,6 +45,20 @@ export default function Footer() {
               A national hackathon by CEAM Research Lab & the Student Autonomous
               Vehicle Project at Manipal Academy of Higher Education.
             </p>
+
+            <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', marginTop: '2rem' }}>
+              <img
+                src="/manipal/manipal-logo.png"
+                alt="Manipal Academy of Higher Education"
+                style={{ height: '80px', width: 'auto', objectFit: 'contain', opacity: 0.95 }}
+              />
+              <div style={{ width: '1px', height: '50px', backgroundColor: 'rgba(255,255,255,0.15)' }}></div>
+              <img
+                src="/manipal/ceam-logo.png"
+                alt="CEAM Research Lab"
+                style={{ height: '70px', width: 'auto', objectFit: 'contain', opacity: 0.95, borderRadius: '6px' }}
+              />
+            </div>
           </div>
 
           {/* Quick Links */}
