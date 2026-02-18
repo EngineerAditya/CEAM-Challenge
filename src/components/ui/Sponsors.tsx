@@ -7,7 +7,7 @@ import Image from 'next/image';
 const partners = [
   {
     name: 'ARTPARK',
-    logo: '/sponsor-logo/ARTPARK primary logo.png',
+    logo: '/sponsor-logo/artpark.svg',
     role: 'Hardware & Knowledge Partner',
     url: 'https://www.artpark.in/',
   },

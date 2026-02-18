@@ -3,8 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { X } from 'lucide-react';
+import { X, Menu } from 'lucide-react';
 
 const navLinks = [
   { label: 'About', href: '/#about', num: '01' },
@@ -21,13 +20,17 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Lock body scroll logic
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      // We rely on global CSS for overflow-x: hidden now
+    }
   }, [open]);
 
   useEffect(() => {
@@ -65,415 +68,136 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
+      <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`site-nav ${scrolled ? 'scrolled' : ''} ${open ? 'menu-open' : ''}`}
+        className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 w-full ${scrolled ? 'pt-4' : 'pt-6'
+          }`}
       >
-        <div className="nav-container">
-          <a href="/" className="nav-logo" onClick={(e) => handleNav(e, '/')}>
+        <div
+          className={`relative flex items-center justify-between transition-all duration-500 ease-out
+          ${scrolled
+              ? 'bg-[#050505]/80 border-white/10 shadow-2xl shadow-black/50 md:max-w-[800px]'
+              : 'bg-transparent border-transparent md:max-w-[1200px]'
+            }
+          /* FIX: Use calc(100% - 2rem) instead of vw to respect scrollbars */
+          w-[calc(100%-2rem)]
+          backdrop-blur-xl border rounded-full px-5 py-3 md:py-4`}
+        >
+          {/* Logo Section */}
+          <a
+            href="/"
+            onClick={(e) => handleNav(e, '/')}
+            className="flex items-center gap-2 z-50 relative group shrink-0"
+          >
             <img
-              src="/manipal/manipal-logo.png"
+              src="/manipal/manipal-logo.svg"
               alt="MAHE"
-              className="nav-logo-img"
+              className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </a>
 
-          <div className="nav-links-desktop">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNav(e, link.href)}
-                className="nav-link-desktop"
-              >
-                {link.label}
-              </a>
-            ))}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-1 ml-auto">
+            <div className="flex items-center bg-white/[0.03] border border-white/5 rounded-full px-2 py-1.5 mr-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleNav(e, link.href)}
+                  className="relative px-5 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors rounded-full hover:bg-white/5"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
             <a
               href="/#register"
               onClick={(e) => handleNav(e, '/#register')}
-              className="nav-cta-desktop"
+              className="group relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-black transition duration-300 ease-out rounded-full shadow-md"
             >
-              Registrations Starting Soon
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-gray-200 to-gray-400"></span>
+              <span className="absolute top-0 right-0 block w-64 h-64 -mr-16 -mt-16 bg-white opacity-20 transform rotate-45 translate-x-full group-hover:translate-x-0 transition-all duration-700 ease-in-out"></span>
+              <span className="relative flex items-center gap-2 text-xs font-bold tracking-widest uppercase">
+                Register
+                <span className="w-1.5 h-1.5 rounded-full bg-[rgb(235,107,38)] animate-pulse" />
+              </span>
             </a>
-          </div>
+          </nav>
 
+          {/* Mobile Hamburger */}
           <button
-            className="nav-hamburger"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen(true)}
+            className="md:hidden relative z-50 p-2 text-white hover:text-[rgb(235,107,38)] transition-colors"
           >
-            <div className={`hamburger-box ${open ? 'open' : ''}`}>
-              <div className="hamburger-inner" />
-            </div>
+            <Menu size={28} strokeWidth={1.5} />
           </button>
         </div>
-      </motion.nav>
+      </motion.header>
 
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
-            key="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.2 } }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="mobile-menu-overlay"
+            className="fixed inset-0 z-[60] bg-[#050505]/95 backdrop-blur-2xl flex flex-col items-center justify-center overscroll-none touch-none"
           >
-            {/* Explicit Close Button inside Overlay */}
             <button
               onClick={() => setOpen(false)}
-              className="mobile-close-btn"
-              aria-label="Close menu"
+              className="absolute top-8 right-8 p-2 text-gray-400 hover:text-white transition-colors"
             >
               <X size={32} strokeWidth={1} />
             </button>
 
-            <div className="mobile-menu-content">
-              <div className="mobile-links-container">
+            <div className="w-full max-w-md px-8 flex flex-col gap-8">
+              <div className="flex flex-col gap-6">
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.label}
-                    initial={{ y: 40, opacity: 0 }}
+                    initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: 20, opacity: 0 }}
-                    transition={{
-                      delay: 0.1 + i * 0.08,
-                      duration: 0.5,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="mobile-link-wrapper"
+                    transition={{ delay: 0.1 + i * 0.1 }}
                   >
                     <a
                       href={link.href}
                       onClick={(e) => handleNav(e, link.href)}
-                      className="mobile-link"
+                      className="group flex items-center gap-4 text-3xl md:text-4xl font-light text-white tracking-tight"
                     >
-                      <span className="mobile-link-num">{link.num}</span>
-                      <span className="mobile-link-text">{link.label}</span>
+                      <span className="text-xs font-mono text-[rgb(235,107,38)] pt-2">
+                        {link.num}
+                      </span>
+                      <span className="group-hover:translate-x-2 transition-transform duration-300">
+                        {link.label}
+                      </span>
                     </a>
+                    <div className="h-px w-full bg-white/5 mt-6" />
                   </motion.div>
                 ))}
               </div>
 
               <motion.div
-                initial={{ y: 40, opacity: 0 }}
+                initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 20, opacity: 0 }}
-                transition={{
-                  delay: 0.45,
-                  duration: 0.5,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="mobile-cta-container"
+                transition={{ delay: 0.4 }}
               >
                 <a
                   href="/#register"
                   onClick={(e) => handleNav(e, '/#register')}
-                  className="mobile-cta-button"
+                  className="flex items-center justify-center w-full py-4 bg-white text-black font-bold uppercase tracking-widest text-sm rounded-lg hover:bg-[rgb(235,107,38)] hover:text-white transition-colors duration-300"
                 >
                   Registrations Starting Soon
                 </a>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ delay: 0.55, duration: 0.5 }}
-                className="mobile-footer-info"
-              >
-                MAHE Mobility Challenge 2026
               </motion.div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      <style jsx global>{`
-        :root {
-          --nav-height: 90px; /* Increased height for larger logo */
-          --nav-bg-scrolled: rgba(5, 5, 5, 0.9);
-          --nav-border-scrolled: rgba(255, 255, 255, 0.06);
-        }
-
-        .site-nav {
-          position: fixed;
-          top: 1rem;
-          /* Mobile-first: fixed */
-          left: 1rem;
-          right: 1rem;
-          width: auto;
-          transform: none; 
-          z-index: 1000;
-          height: 80px; /* Increased mobile height */
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 9999px;
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          background: rgba(5, 5, 5, 0.7);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        @media (min-width: 900px) {
-          .site-nav {
-            left: 50%;
-            right: auto;
-            transform: translateX(-50%);
-            width: calc(100% - 4rem);
-            max-width: 900px;
-          }
-        }
-
-        .site-nav.scrolled {
-           background: rgba(5, 5, 5, 0.9);
-           backdrop-filter: blur(16px);
-           -webkit-backdrop-filter: blur(16px);
-           border-color: rgba(255, 255, 255, 0.1);
-           box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-        }
-        
-        .nav-container {
-          width: 100%;
-          padding: 0 1.5rem; /* Increased padding */
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: 100%;
-        }
-
-        .nav-logo {
-          text-decoration: none;
-          z-index: 1002;
-          position: relative; 
-          display: flex;
-          align-items: center;
-        }
-
-        .nav-logo-img {
-          height: 60px; /* Increased mobile logo size */
-          width: auto;
-          transition: opacity 0.3s;
-        }
-        
-        @media (min-width: 768px) {
-          .nav-logo-img {
-             height: 70px; /* Increased desktop logo size */
-          }
-        }
-
-        .nav-links-desktop {
-          display: none;
-          align-items: center;
-          gap: 2.5rem;
-        }
-
-        .nav-link-desktop {
-          text-decoration: none;
-          font-family: var(--font-body);
-          font-size: 0.75rem; /* Reduced text size */
-          font-weight: 500;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.6);
-          transition: color 0.3s;
-          position: relative;
-        }
-
-        .nav-link-desktop:hover {
-          color: #fff;
-        }
-        
-        .nav-link-desktop::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 1px;
-            background: rgb(235, 107, 38);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link-desktop:hover::after {
-            width: 12px;
-        }
-
-        .nav-cta-desktop {
-          text-decoration: none;
-          font-family: var(--font-body);
-          font-size: 0.7rem; /* Reduced cta text size */
-          font-weight: 600;
-          color: #050505;
-          background: #fff;
-          padding: 0.5rem 1.2rem; /* Adjusted pill size */
-          border-radius: 99px;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          transition: all 0.3s ease;
-        }
-
-        .nav-cta-desktop:hover {
-          background: rgb(235, 107, 38);
-          color: #fff;
-          transform: translateY(-1px);
-        }
-
-        .nav-hamburger {
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          width: 40px;
-          height: 40px;
-          background: none;
-          border: none;
-          cursor: pointer;
-          z-index: 1002; 
-          color: #fff;
-          padding: 0;
-        }
-        
-        .site-nav.menu-open .nav-hamburger {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .hamburger-box {
-          width: 18px;
-          height: 12px;
-          position: relative;
-        }
-
-        .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-            width: 18px;
-            height: 1.5px;
-            background-color: currentColor;
-            position: absolute;
-            transition: transform 0.25s ease;
-        }
-        .hamburger-inner { top: 50%; margin-top: -0.75px; }
-        .hamburger-inner::before { content: ""; top: -5px; }
-        .hamburger-inner::after { content: ""; bottom: -5px; }
-
-        .mobile-menu-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100vh;
-          background: #050505;
-          z-index: 1001;
-          display: flex;
-          align-items: center;
-          padding: 2rem 1.5rem;
-        }
-
-        .mobile-close-btn {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: none;
-            border: none;
-            color: rgba(255,255,255,0.6);
-            cursor: pointer;
-            z-index: 1005;
-            transition: color 0.3s;
-        }
-        .mobile-close-btn:hover {
-            color: #fff;
-        }
-
-        .mobile-menu-content {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding-bottom: 2rem; 
-        }
-
-        .mobile-links-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.75rem;
-            margin-bottom: 3rem;
-        }
-
-        .mobile-link {
-          text-decoration: none;
-          display: flex;
-          align-items: flex-start; 
-        }
-
-        .mobile-link-num {
-          font-family: var(--font-heading);
-          font-size: 0.8rem;
-          color: rgb(235, 107, 38);
-          margin-right: 1rem;
-          margin-top: 0.4rem;
-          font-weight: 400;
-        }
-
-        .mobile-link-text {
-          font-family: var(--font-heading);
-          font-size: 2.5rem;
-          line-height: 0.9;
-          font-weight: 400;
-          color: #fff;
-          text-transform: uppercase;
-          transition: color 0.3s;
-        }
-
-        .mobile-link:active .mobile-link-text {
-            color: rgba(255,255,255,0.5);
-        }
-
-        .mobile-cta-button {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            text-align: center;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 99px;
-            letter-spacing: 0.1em;
-            transition: all 0.3s;
-        }
-        .mobile-cta-button:hover {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
-        
-        .mobile-footer-info {
-            position: absolute;
-            bottom: 2rem;
-            left: 1.5rem;
-            font-family: var(--font-body);
-            font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.25);
-            letter-spacing: 0.05em;
-        }
-
-        @media (min-width: 768px) {
-          .nav-hamburger { display: none; }
-          .nav-links-desktop { display: flex; }
-          .mobile-menu-overlay { display: none; }
-          .nav-container { padding: 0 2rem; }
-        }
-      `}</style>
     </>
   );
 }

@@ -48,7 +48,7 @@ export default function Footer() {
 
             <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', marginTop: '2rem' }}>
               <img
-                src="/manipal/manipal-logo.png"
+                src="/manipal/manipal-logo.svg"
                 alt="Manipal Academy of Higher Education"
                 style={{ height: '80px', width: 'auto', objectFit: 'contain', opacity: 0.95 }}
               />

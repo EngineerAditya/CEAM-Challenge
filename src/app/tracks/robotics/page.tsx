@@ -53,7 +53,7 @@ export default function RoboticsTrack() {
               <span className="font-mono text-[10px] md:text-xs text-[rgb(235,107,38)] tracking-[0.4em] uppercase font-bold flex items-center gap-3">
                 Track_02 in Collaboration with
                 <img
-                  src="/sponsor-logo/ARTPARK%20primary%20logo.png"
+                  src="/sponsor-logo/artpark.svg"
                   alt="ARTPARK IISc"
                   className="h-8 md:h-10 w-auto"
                 />

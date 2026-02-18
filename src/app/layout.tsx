@@ -28,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} noise-overlay`}
+        className={`${geistSans.variable} ${geistMono.variable} noise-overlay antialiased`}
       >
+        {/* FIX: Navbar must be OUTSIDE SmoothScroll to stay fixed properly */}
+        <Navbar />
+
         <SmoothScroll>
-          <Navbar />
           {children}
         </SmoothScroll>
       </body>
