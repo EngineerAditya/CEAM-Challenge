@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
-import { X, Menu } from 'lucide-react';
+import { X, Menu, User } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 const navLinks = [
   { label: 'About', href: '/#about', num: '01' },
@@ -14,8 +15,25 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState<{ email?: string } | null>(null);
   const router = useRouter();
   const pathname = usePathname();
+  const supabase = createClient();
+
+  // Check auth state
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    getUser();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [supabase]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -114,15 +132,18 @@ export default function Navbar() {
             </div>
 
             <a
-              href="/#register"
-              onClick={(e) => handleNav(e, '/#register')}
+              href={user ? '/dashboard' : '/login'}
+              onClick={(e) => handleNav(e, user ? '/dashboard' : '/login')}
               className="group relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-black transition duration-300 ease-out rounded-full shadow-md"
             >
               <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-white via-gray-200 to-gray-400"></span>
               <span className="absolute top-0 right-0 block w-64 h-64 -mr-16 -mt-16 bg-white opacity-20 transform rotate-45 translate-x-full group-hover:translate-x-0 transition-all duration-700 ease-in-out"></span>
               <span className="relative flex items-center gap-2 text-xs font-bold tracking-widest uppercase">
-                Register
-                <span className="w-1.5 h-1.5 rounded-full bg-[rgb(235,107,38)] animate-pulse" />
+                {user ? (
+                  <><User size={14} /> Dashboard</>
+                ) : (
+                  <>Register <span className="w-1.5 h-1.5 rounded-full bg-[rgb(235,107,38)] animate-pulse" /></>
+                )}
               </span>
             </a>
           </nav>
@@ -187,11 +208,11 @@ export default function Navbar() {
                 transition={{ delay: 0.4 }}
               >
                 <a
-                  href="/#register"
-                  onClick={(e) => handleNav(e, '/#register')}
-                  className="flex items-center justify-center w-full py-4 bg-white text-black font-bold uppercase tracking-widest text-sm rounded-lg hover:bg-[rgb(235,107,38)] hover:text-white transition-colors duration-300"
+                  href={user ? '/dashboard' : '/login'}
+                  onClick={(e) => handleNav(e, user ? '/dashboard' : '/login')}
+                  className="flex items-center justify-center gap-2 w-full py-4 bg-white text-black font-bold uppercase tracking-widest text-sm rounded-lg hover:bg-[rgb(235,107,38)] hover:text-white transition-colors duration-300"
                 >
-                  Registrations Starting Soon
+                  {user ? (<><User size={16} /> Dashboard</>) : 'Sign In to Register'}
                 </a>
               </motion.div>
             </div>
