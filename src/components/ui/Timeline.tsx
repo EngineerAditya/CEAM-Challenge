@@ -4,11 +4,11 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform, useInView } from 'framer-motion';
 
 const events = [
-  { title: 'Registrations Starting Soon', desc: 'Team formation and registration begins.' },
-  { title: 'Registration Deadline', desc: 'Last date to register your team.' },
-  { title: 'Problem Statements Released', desc: 'Track-specific challenges go live.' },
-  { title: 'Hackathon Kickoff', desc: '36 hours of building begins.' },
-  { title: 'Demo Day & Awards', desc: 'Live demonstrations and prize ceremony.' },
+  { title: 'Registrations Open', desc: 'Team formation and registration has begun.' },
+  { title: 'Registration Deadline', desc: 'Last date to register your team is 15th March 2026.' },
+  { title: 'Round 01 Submission', desc: 'Submit your innovative ideas and solutions by 31st March 2026.' },
+  { title: 'Round 01 Results Announcement', desc: 'Shortlisted teams results will be announced on 5th April 2026.' },
+  { title: 'Round 02 Kickoff', desc: 'Offline Development Round begins on 17th April 2026.' },
 ];
 
 export default function CurvyTimeline() {
