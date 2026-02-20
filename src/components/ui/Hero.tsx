@@ -153,7 +153,7 @@ export default function Hero() {
             style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 75%, 85% 100%, 0 100%, 0 25%)' }}
           >
             <div className="absolute inset-0 bg-[rgb(235,107,38)] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-in-out" />
-            <span className="relative z-10 group-hover:text-white transition-colors uppercase">Registrations Opening Soon</span>
+            <span className="relative z-10 group-hover:text-white transition-colors uppercase">Registrations Close on 15th March</span>
           </button>
         </motion.div>
 
