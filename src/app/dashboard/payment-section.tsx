@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
+import PaymentInstructions from '@/components/ui/PaymentInstructions';
 
 const PAYMENT_URL =
   'https://conference.manipal.edu/Registration/Registration?workshop=F1vbHYgLrd9Y4WLG7Wx6w3qnH7EU%2fDbgx0kHtMu8VPI%3d';
@@ -28,8 +29,8 @@ export default function PaymentSection({ userId }: { userId: string }) {
       return;
     }
 
-    if (!trimmed.startsWith('O_PTMITBR0061_')) {
-      setError('Order ID must start with O_PTMITBR0061_');
+    if (!trimmed.startsWith('O_PTMITBR0061_') && !trimmed.startsWith('O_ATMITBR0061_')) {
+      setError('Order ID must start with O_PTMITBR0061_ or O_ATMITBR0061_');
       setLoading(false);
       return;
     }
@@ -54,6 +55,8 @@ export default function PaymentSection({ userId }: { userId: string }) {
 
   return (
     <div className="flex flex-col gap-5">
+      <PaymentInstructions />
+
       {/* Step indicator */}
       <div className="flex items-center gap-3 mb-1">
         <div className="w-8 h-8 rounded-full bg-[rgb(235,107,38)] flex items-center justify-center text-black text-xs font-bold">
@@ -87,8 +90,9 @@ export default function PaymentSection({ userId }: { userId: string }) {
             Order ID
           </label>
           <p className="text-xs text-gray-500 mb-3">
-            After payment, enter the Order ID from your confirmation (e.g.{' '}
-            <span className="text-gray-300 font-mono">O_PTMITBR0061_XXXXXX</span>)
+            After payment, enter the Order ID from your confirmation (starts with{' '}
+            <span className="text-gray-300 font-mono">O_PTMITBR0061_</span> or{' '}
+            <span className="text-gray-300 font-mono">O_ATMITBR0061_</span>)
           </p>
           <input
             type="text"

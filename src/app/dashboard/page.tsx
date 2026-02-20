@@ -39,7 +39,7 @@ export default async function DashboardPage() {
   const hasTeam = !!team;
 
   return (
-    <div className="min-h-screen bg-[#050505] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#050505] flex items-center justify-center px-4 pt-28 pb-12">
       <div className="w-full max-w-lg flex flex-col gap-6">
 
         {/* Profile Card */}

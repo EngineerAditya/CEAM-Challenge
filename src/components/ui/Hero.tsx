@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
 
 // Scramble Text Component
 const ScrambleText = ({ text, className, delay = 0 }: { text: string, className?: string, delay?: number }) => {
@@ -148,13 +149,14 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1.5 }}
           className="mt-16 md:mt-24 w-full flex justify-center"
         >
-          <button
+          <Link
+            href="/login"
             className="group relative px-10 py-6 md:px-16 md:py-8 bg-white text-black font-black text-sm md:text-xl tracking-tighter overflow-hidden transition-all hover:scale-105 active:scale-95"
             style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 75%, 85% 100%, 0 100%, 0 25%)' }}
           >
             <div className="absolute inset-0 bg-[rgb(235,107,38)] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-in-out" />
             <span className="relative z-10 group-hover:text-white transition-colors uppercase">Registrations Close on 15th March</span>
-          </button>
+          </Link>
         </motion.div>
 
       </motion.div>

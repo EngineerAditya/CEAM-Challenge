@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import PaymentInstructions from '@/components/ui/PaymentInstructions';
 
 const TRACKS = [
   { value: 'robotics', label: 'Robotics' },
@@ -31,6 +32,7 @@ export default function CompleteProfilePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+
   useEffect(() => {
     const getUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -40,6 +42,7 @@ export default function CompleteProfilePage() {
       if (user?.user_metadata?.full_name) {
         setName(user.user_metadata.full_name);
       }
+
     };
     getUser();
   }, [supabase]);
@@ -119,8 +122,11 @@ export default function CompleteProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#050505] flex items-center justify-center px-4 pt-28 pb-12">
       <div className="w-full max-w-lg">
+
+        {/* Instructions */}
+        <PaymentInstructions className="mb-6" />
 
         {/* Card */}
         <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 backdrop-blur-xl">
