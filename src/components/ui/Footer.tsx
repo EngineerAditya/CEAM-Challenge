@@ -76,7 +76,7 @@ export default function Footer() {
             >
               Quick Links
             </div>
-            {['About', 'Tracks', 'Timeline', 'Registrations Starting Soon'].map((link) => (
+            {['About', 'Tracks', 'Timeline'].map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
