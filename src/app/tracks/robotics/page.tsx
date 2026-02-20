@@ -55,7 +55,7 @@ export default function RoboticsTrack() {
                 <img
                   src="/sponsor-logo/artpark.svg"
                   alt="ARTPARK IISc"
-                  className="h-8 md:h-10 w-auto"
+                  className="h-12 md:h-15 w-auto"
                 />
               </span>
             </div>

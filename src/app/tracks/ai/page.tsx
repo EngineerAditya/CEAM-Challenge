@@ -62,7 +62,7 @@ export default function AITrackPage() {
                 <img
                   src="/sponsor-logo/Harman.svg"
                   alt="Harman Automotive"
-                  className="h-8 md:h-10 w-auto invert brightness-0"
+                  className="h-12 md:h-15 w-auto"
                 />
               </span>
             </div>
@@ -113,7 +113,7 @@ export default function AITrackPage() {
                   <span className="flex items-center gap-1 text-gray-300 mt-1"><MapPin size={14} /> Manipal Institute of Technology, BLR</span>
                 </p>
                 <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-md">
-                  <span className="font-mono text-xs text-white">Dates: 17, 18, 19 [Month] 2026</span>
+                  <span className="font-mono text-xs text-white">Dates: 17, 18, 19 April 2026</span>
                 </div>
               </div>
             </div>
