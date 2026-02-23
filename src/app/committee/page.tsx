@@ -18,7 +18,7 @@ const faculty = [
 ];
 
 const students = [
-  { name: 'Jhagruth Anaconda', role: '', linkedin: 'https://www.linkedin.com/in/jhagruth/' },
+  { name: 'Jhagruth Palakonda', role: '', linkedin: 'https://www.linkedin.com/in/jhagruth/' },
   { name: 'Mohan Sai Koushik Mandava', role: '', linkedin: 'https://www.linkedin.com/in/mmskoushik007/' },
   { name: 'Akshat G', role: '', linkedin: 'https://www.linkedin.com/in/akshat-gururaj/' },
   { name: 'Tushar S Chillal', role: '', linkedin: 'https://www.linkedin.com/in/tushar-s-chillal-59146b334/' },
