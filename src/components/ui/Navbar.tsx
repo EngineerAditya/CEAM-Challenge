@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'About', href: '/#about', num: '01' },
   { label: 'Tracks', href: '/#tracks', num: '02' },
   { label: 'Timeline', href: '/#timeline', num: '03' },
+  { label: 'Committee', href: '/committee', num: '04' },
 ];
 
 export default function Navbar() {
