@@ -109,11 +109,19 @@ export default function CreateTeamPage() {
             Create Your Team
           </h1>
           <p
-            className="text-sm text-gray-400 text-center mb-8"
+            className="text-sm text-gray-400 text-center mb-4"
             style={{ fontFamily: 'var(--font-body)' }}
           >
             Add your teammates to complete registration
           </p>
+
+          {/* Leader note */}
+          <div className="flex items-start gap-3 bg-[rgb(235,107,38)]/10 border border-[rgb(235,107,38)]/25 rounded-xl px-4 py-3 mb-8">
+            <span className="text-[rgb(235,107,38)] text-base mt-0.5">ℹ</span>
+            <p className="text-xs text-gray-300 leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+              <span className="text-white font-semibold">Team leaders</span> — you do not need to enter your own details here. Only fill in your teammates&apos; information below.
+            </p>
+          </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             {/* Team Name */}

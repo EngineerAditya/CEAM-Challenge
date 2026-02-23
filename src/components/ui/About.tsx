@@ -91,6 +91,24 @@ export default function About() {
                   </p>
                 </div>
               </div>
+
+              {/* Contact callout */}
+              <motion.a
+                href="mailto:coeam.mitblr@manipal.edu"
+                initial={{ opacity: 0, y: 16 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="group flex items-center justify-between gap-6 border border-[rgb(235,107,38)]/30 hover:border-[rgb(235,107,38)]/70 bg-[rgb(235,107,38)]/5 hover:bg-[rgb(235,107,38)]/10 rounded-2xl px-6 py-5 mt-4 transition-all duration-300 no-underline"
+              >
+                <div className="flex flex-col gap-1">
+                  <span className="font-mono text-[10px] text-[rgb(235,107,38)] uppercase tracking-[0.25em]">Have Questions?</span>
+                  <span className="font-body text-white text-base md:text-lg font-light tracking-tight group-hover:text-[rgb(235,107,38)] transition-colors duration-300">
+                    coeam.mitblr@manipal.edu
+                  </span>
+                  <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest">Drop us a mail — we&apos;re happy to help</span>
+                </div>
+                <span className="text-[rgb(235,107,38)] text-2xl opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">→</span>
+              </motion.a>
             </motion.div>
           </div>
 

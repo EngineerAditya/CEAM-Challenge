@@ -79,7 +79,7 @@ export default function Footer() {
             {['About', 'Tracks', 'Timeline'].map((link) => (
               <a
                 key={link}
-                href={`#${link.toLowerCase()}`}
+                href={`/#${link.toLowerCase()}`}
                 style={{
                   display: 'block',
                   textDecoration: 'none',
@@ -96,6 +96,23 @@ export default function Footer() {
                 {link}
               </a>
             ))}
+            <a
+              href="/login"
+              style={{
+                display: 'block',
+                textDecoration: 'none',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.8rem',
+                fontWeight: 300,
+                color: 'var(--fg-muted)',
+                padding: '0.3rem 0',
+                transition: 'color 0.3s',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-muted)')}
+            >
+              Register
+            </a>
           </div>
 
           {/* Contact */}
