@@ -95,7 +95,7 @@ export default function CompleteProfilePage() {
     }
 
     const finalCollegeName = isMahe ? `MAHE-${campus}` : collegeName;
-    const finalRegNum = regNum ? parseInt(regNum) : null;
+    const finalRegNum = regNum ? regNum : null;
 
     const { error: upsertError } = await supabase.from('profiles').upsert({
       id: user.id,
@@ -241,7 +241,7 @@ export default function CompleteProfilePage() {
                   type="text"
                   value={collegeName}
                   onChange={(e) => setCollegeName(e.target.value)}
-                  placeholder="e.g. MIT"
+                  placeholder="e.g. XYZ college"
                   className="w-full px-4 py-3 bg-white/[0.02] border border-white/10 rounded-xl text-white text-sm outline-none focus:border-[rgb(235,107,38)]/50 transition-colors placeholder:text-gray-600"
                   required
                 />
@@ -257,10 +257,10 @@ export default function CompleteProfilePage() {
                     : 'College Registration Number / ID Card Number'}
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   value={regNum}
                   onChange={(e) => setRegNum(e.target.value)}
-                  placeholder="Enter Number"
+                  placeholder="Enter Registration Number"
                   className="w-full px-4 py-3 bg-white/[0.02] border border-white/10 rounded-xl text-white text-sm outline-none focus:border-[rgb(235,107,38)]/50 transition-colors placeholder:text-gray-600"
                   required
                 />
