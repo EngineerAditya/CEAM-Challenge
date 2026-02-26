@@ -75,7 +75,7 @@ export default function CreateTeamPage() {
         teamData[`teammate${num}_name`] = tm.name.trim();
         teamData[`teammate${num}_email`] = tm.email.trim() || null;
         teamData[`teammate${num}_mobile`] = tm.mobile ? parseInt(tm.mobile) : null;
-        teamData[`teammate${num}_reg_num`] = tm.regNum ? parseInt(tm.regNum) : null;
+        teamData[`teammate${num}_reg_num`] = tm.regNum ? tm.regNum : null;
       }
     });
 
@@ -222,7 +222,7 @@ export default function CreateTeamPage() {
                       Reg / ID Number
                     </label>
                     <input
-                      type="number"
+                      type="text"
                       value={tm.regNum}
                       onChange={(e) => updateTeammate(index, 'regNum', e.target.value)}
                       placeholder="Registration Number"
