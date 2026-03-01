@@ -275,7 +275,10 @@ export default function CompleteProfilePage() {
               <input
                 type="tel"
                 value={mobileNumber}
-                onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                onChange={(e) => {
+                  const digits = e.target.value.replace(/\D/g, '');
+                  if (digits.length <= 10) setMobileNumber(digits);
+                }}
                 placeholder="10-digit mobile number"
                 className="w-full px-4 py-3 bg-white/[0.02] border border-white/10 rounded-xl text-white text-sm outline-none focus:border-[rgb(235,107,38)]/50 transition-colors placeholder:text-gray-600"
                 required

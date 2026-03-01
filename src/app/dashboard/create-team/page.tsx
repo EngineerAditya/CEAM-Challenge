@@ -61,6 +61,16 @@ export default function CreateTeamPage() {
       return;
     }
 
+    // Validate teammate mobile numbers (must be exactly 10 digits if provided)
+    for (let i = 0; i < teammates.length; i++) {
+      const tm = teammates[i];
+      if (tm.name.trim() && tm.mobile && !/^\d{10}$/.test(tm.mobile)) {
+        setError(`Teammate ${i + 1}: Please enter a valid 10-digit mobile number.`);
+        setLoading(false);
+        return;
+      }
+    }
+
     // Build the insert object
     const teamData: Record<string, unknown> = {
       team_name: teamName.trim(),
@@ -210,9 +220,10 @@ export default function CreateTeamPage() {
                     <input
                       type="tel"
                       value={tm.mobile}
-                      onChange={(e) =>
-                        updateTeammate(index, 'mobile', e.target.value.replace(/\D/g, '').slice(0, 10))
-                      }
+                      onChange={(e) => {
+                        const digits = e.target.value.replace(/\D/g, '');
+                        if (digits.length <= 10) updateTeammate(index, 'mobile', digits);
+                      }}
                       placeholder="10-digit number"
                       className="w-full px-4 py-3 bg-white/[0.02] border border-white/10 rounded-xl text-white text-sm outline-none focus:border-[rgb(235,107,38)]/50 transition-colors placeholder:text-gray-600"
                     />
