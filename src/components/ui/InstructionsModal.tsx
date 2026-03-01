@@ -69,7 +69,7 @@ export default function InstructionsModal({ isOpen, onClose, title = "Important 
 
                 <div className="flex gap-3">
                   <div className="shrink-0 w-6 h-6 rounded-full bg-[rgb(235,107,38)]/20 text-[rgb(235,107,38)] flex items-center justify-center font-bold text-xs mt-0.5">4</div>
-                  <p><strong className="text-white">Order ID:</strong> After payment, the confirmation page will show an <span className="font-mono text-[rgb(235,107,38)]">Order ID</span>. You <span className="underline decoration-[rgb(235,107,38)] decoration-2">MUST COPY</span> this immediately. Entering a wrong Order ID will result in disqualification.</p>
+                  <p><strong className="text-white">Receipt Number:</strong> After payment, you will receive a <span className="font-mono text-[rgb(235,107,38)]">Receipt Number</span> via email. You <span className="underline decoration-[rgb(235,107,38)] decoration-2">MUST ENTER</span> this correctly. Entering a wrong Receipt Number will result in disqualification.</p>
                 </div>
               </div>
             </div>

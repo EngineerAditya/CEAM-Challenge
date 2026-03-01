@@ -76,7 +76,7 @@ export default async function DashboardPage() {
                 </div>
                 <h2 className="text-lg font-bold text-white">Payment Complete</h2>
               </div>
-              <ProfileField label="Order ID" value={profile.order_id} />
+              <ProfileField label="Receipt Number" value={profile.order_id} />
             </div>
           ) : (
             <PaymentSection userId={user.id} />

@@ -24,13 +24,13 @@ export default function PaymentSection({ userId }: { userId: string }) {
     const trimmed = orderId.trim();
 
     if (!trimmed) {
-      setError('Please enter your Order ID.');
+      setError('Please enter your Receipt Number.');
       setLoading(false);
       return;
     }
 
-    if (!trimmed.startsWith('O_PTMITBR0061_') && !trimmed.startsWith('O_ATMITBR0061_')) {
-      setError('Order ID must start with O_PTMITBR0061_ or O_ATMITBR0061_');
+    if (!trimmed.startsWith('recMITBR0061_')) {
+      setError('Receipt Number must start with recMITBR0061_');
       setLoading(false);
       return;
     }
@@ -42,7 +42,7 @@ export default function PaymentSection({ userId }: { userId: string }) {
 
     if (updateError) {
       if (updateError.message.includes('duplicate') || updateError.message.includes('unique')) {
-        setError('This Order ID is already registered by another user.');
+        setError('This Receipt Number is already registered by another user.');
       } else {
         setError(updateError.message);
       }
@@ -83,22 +83,21 @@ export default function PaymentSection({ userId }: { userId: string }) {
         </a>
       </div>
 
-      {/* Order ID form */}
+      {/* Receipt Number form */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div>
           <label className="block text-xs text-gray-400 uppercase tracking-widest mb-2 font-medium">
-            Order ID
+            Receipt Number
           </label>
           <p className="text-xs text-gray-500 mb-3">
-            After payment, enter the Order ID from your confirmation (starts with{' '}
-            <span className="text-gray-300 font-mono">O_PTMITBR0061_</span> or{' '}
-            <span className="text-gray-300 font-mono">O_ATMITBR0061_</span>)
+            Enter the receipt number which is sent via email to you (starts with{' '}
+            <span className="text-gray-300 font-mono">recMITBR0061_</span>)
           </p>
           <input
             type="text"
             value={orderId}
             onChange={(e) => setOrderId(e.target.value)}
-            placeholder="O_PTMITBR0061_XXXXXX"
+            placeholder="recMITBR0061_000XXX"
             className="w-full px-4 py-3 bg-white/[0.02] border border-white/10 rounded-xl text-white text-sm outline-none focus:border-[rgb(235,107,38)]/50 transition-colors placeholder:text-gray-600 font-mono"
             required
           />
@@ -115,7 +114,7 @@ export default function PaymentSection({ userId }: { userId: string }) {
           disabled={loading}
           className="w-full py-3.5 bg-white hover:bg-gray-100 text-black font-bold text-sm uppercase tracking-widest rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-white/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
-          {loading ? 'Submitting...' : 'Submit Order ID'}
+          {loading ? 'Submitting...' : 'Submit Receipt Number'}
         </button>
       </form>
     </div>
