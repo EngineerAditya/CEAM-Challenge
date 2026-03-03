@@ -3,42 +3,59 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
-import { Cpu, Bot, Shield, ArrowUpRight, Lock } from 'lucide-react';
-import { SHOW_TRACK_DETAILS } from '@/lib/constants';
+import { Cpu, Bot, Shield, ArrowRight, Lock } from 'lucide-react';
 
 const tracks = [
   {
     id: 'ai',
     title: 'AI in Mobility',
     num: '01',
+    subtitle: 'In collaboration with Harman Automotive',
+    sponsorLogo: '/sponsor-logo/Harman.svg',
+    sponsorAlt: 'Harman Automotive',
     description:
-      'Reimagine the connected cockpit. From network-aware routing to predictive safety, build the next generation of automotive experiences.',
-    icon: <Cpu size={24} />,
+      'Build the future of smart, connected vehicles.',
+    details:
+      'Solve real-world problems like finding the best routes based on network strength, smartly delaying non-urgent notifications, and detecting wrong-way drivers to improve road safety.',
+    icon: <Cpu size={28} />,
     color: 'rgb(235, 107, 38)',
-    tags: ['Network Optimization', 'Predictive Safety', 'Context Awareness'],
+    tags: ['Smart Routing', 'Safety', 'Context Awareness', 'Connectivity'],
     href: '/tracks/ai',
+    phases: ['Online Ideation', 'In-Person Hackathon'],
   },
   {
     id: 'robotics',
-    title: 'Robotics & Control',
+    title: 'Autonomous Navigation',
     num: '02',
+    subtitle: 'In collaboration with ARTPARK, IISc',
+    sponsorLogo: '/sponsor-logo/artpark.svg',
+    sponsorAlt: 'ARTPARK IISc',
     description:
-      'Where the code meets the chassis. Bridge hardware-software integration, simulations, and high-fidelity control systems.',
-    icon: <Bot size={24} />,
+      'Build a self-driving robot. Write code that helps a robot "see" its environment and drive itself.',
+    details:
+      'Round 1: Submit your proposal. Round 2: After an online workshop by ARTPARK, test your code in a virtual simulation. Round 3: Run your code on a physical robot during the offline event!',
+    icon: <Bot size={28} />,
     color: 'rgb(235, 107, 38)',
-    tags: ['Simulation', 'Actuation', 'Hardware-in-loop'],
+    tags: ['Simulation', 'Computer Vision', 'ROS2', 'Robotics'],
     href: '/tracks/robotics',
+    phases: ['Proposal', 'Online Simulation', 'Hardware Tests'],
   },
   {
     id: 'cybersecurity',
     title: 'Cybersecurity',
     num: '03',
+    subtitle: 'Vehicle Security & Fleet Defense',
+    sponsorLogo: null,
+    sponsorAlt: '',
     description:
-      'Defend the connected fleet. Secure V2X protocols and develop intrusion detection systems for the next generation of autonomous mobility.',
-    icon: <Shield size={24} />,
+      'Protect self-driving cars from hackers. Find and stop cyber attacks on vehicle networks.',
+    details:
+      'Analyze vehicle data logs to spot unusual activity. Build systems that can detect and prevent attacks on car networks (like CAN bus) and inter-vehicle communication (V2X).',
+    icon: <Shield size={28} />,
     color: 'rgb(235, 107, 38)',
-    tags: ['V2X Security', 'Encryption', 'Fleet Defense'],
+    tags: ['CAN Bus', 'Intrusion Detection', 'V2X Security', 'Fleet Defense'],
     href: '/tracks/cybersecurity',
+    phases: ['Dataset Challenge', 'On-Site Finals'],
   },
 ];
 
@@ -76,78 +93,122 @@ export default function Tracks() {
           </motion.h2>
         </div>
 
-        {/* ── Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {tracks.map((track, i) => {
-            const CardContent = (
+        {/* ── Track Sections ── */}
+        <div className="flex flex-col gap-0">
+          {tracks.map((track, i) => (
+            <Link key={track.id} href={track.href} className="group block">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.1, duration: 0.8 }}
-                className="relative h-full p-8 md:p-12 bg-white/[0.02] border border-white/5 group-hover:border-[rgb(235,107,38)]/30 transition-all duration-500 overflow-hidden"
+                transition={{ delay: i * 0.15, duration: 0.8 }}
+                className="relative border-t border-white/5 transition-all duration-500 hover:bg-white/[0.02]"
               >
-                {/* Hover Fill Effect - Only if details shown */}
-                {SHOW_TRACK_DETAILS && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-[rgb(235,107,38)]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                )}
+                {/* Hover glow accent */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[rgb(235,107,38)]/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                {/* Track Number Background */}
-                <span className="absolute -right-4 -top-4 font-heading text-9xl font-bold text-white/[0.02] group-hover:text-[rgb(235,107,38)]/[0.04] transition-colors duration-500 select-none">
-                  {track.num}
-                </span>
+                <div className="relative z-10 py-12 md:py-16">
+                  <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
 
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex justify-between items-start mb-12">
-                    <div className="p-3 bg-white/5 border border-white/10 text-[rgb(235,107,38)] group-hover:scale-110 transition-transform duration-500">
-                      {track.icon}
+                    {/* ── Left: Number + Title + Description ── */}
+                    <div className="flex-1 space-y-6">
+                      {/* Track number + subtitle row */}
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+                        <span className="font-mono text-sm text-[rgb(235,107,38)] tracking-[0.3em] uppercase font-bold">
+                          Track_{track.num}
+                        </span>
+                        <div className="flex items-center gap-3">
+                          {track.sponsorLogo && (
+                            <img
+                              src={track.sponsorLogo}
+                              alt={track.sponsorAlt}
+                              className="h-8 md:h-10 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                            />
+                          )}
+                          <span className="font-mono text-[10px] md:text-xs text-gray-600 tracking-[0.2em] uppercase">
+                            {track.subtitle}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Title */}
+                      <div className="flex items-center gap-6">
+                        <div className="p-3 bg-white/5 border border-white/10 text-[rgb(235,107,38)] group-hover:scale-110 group-hover:bg-[rgb(235,107,38)]/10 transition-all duration-500">
+                          {track.icon}
+                        </div>
+                        <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tighter group-hover:text-[rgb(235,107,38)] transition-colors duration-500">
+                          {track.title}
+                        </h3>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
+                        {track.description}
+                      </p>
+
+                      {/* Extended details */}
+                      <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-2xl">
+                        {track.details}
+                      </p>
                     </div>
-                    {SHOW_TRACK_DETAILS ? (
-                      <ArrowUpRight className="text-gray-700 group-hover:text-[rgb(235,107,38)] transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
-                    ) : (
-                      <Lock className="text-gray-700" size={20} />
-                    )}
-                  </div>
 
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
-                    {track.title}
-                  </h3>
+                    {/* ── Right: Tags + Phase + CTA ── */}
+                    <div className="lg:w-[380px] flex flex-col justify-between gap-8">
+                      {/* Phases */}
+                      <div className="space-y-3">
+                        <span className="font-mono text-[10px] text-gray-500 tracking-[0.3em] uppercase block">
+                          Competition Phases
+                        </span>
+                        <div className="space-y-2">
+                          {track.phases.map((phase, pi) => (
+                            <div
+                              key={phase}
+                              className="flex items-center gap-3 p-3 bg-white/[0.02] border border-white/5 group-hover:border-white/10 transition-colors duration-300"
+                            >
+                              <span className="font-mono text-xs text-[rgb(235,107,38)] font-bold w-6">
+                                {String(pi + 1).padStart(2, '0')}
+                              </span>
+                              <span className="text-sm text-gray-300 font-medium">{phase}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
 
-                  <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-8 flex-grow">
-                    {track.description}
-                  </p>
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2">
+                        {track.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="font-mono text-[9px] md:text-[10px] text-gray-600 uppercase tracking-widest px-3 py-1.5 border border-white/5 group-hover:border-white/10 group-hover:text-gray-400 transition-all duration-300"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
 
-                  <span className={`text-xs ${SHOW_TRACK_DETAILS ? 'text-[rgb(235,107,38)] group-hover:translate-x-2' : 'text-gray-600'} mt-0 mb-6 block font-medium flex items-center gap-2 transition-transform duration-300`}>
-                    {SHOW_TRACK_DETAILS ? (
-                      <>Click to view more info &rarr;</>
-                    ) : (
-                      <>Will be revealed soon</>
-                    )}
-                  </span>
+                      {/* CTA */}
+                      <div className="flex items-center justify-between">
+                        <span className="flex items-center gap-2 text-xs text-gray-600 font-medium">
+                          <Lock size={14} />
+                          <span>More Details On March 15th</span>
+                        </span>
+                        <span className="flex items-center gap-2 text-sm text-gray-600 group-hover:text-[rgb(235,107,38)] font-medium transition-colors duration-300">
+                          Explore Track
+                          <ArrowRight
+                            size={16}
+                            className="group-hover:translate-x-1 transition-transform duration-300"
+                          />
+                        </span>
+                      </div>
+                    </div>
 
-                  <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
-                    {track.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-mono text-[9px] md:text-[10px] text-gray-600 uppercase tracking-widest px-2 py-1 border border-white/5"
-                      >
-                        {tag}
-                      </span>
-                    ))}
                   </div>
                 </div>
               </motion.div>
-            );
+            </Link>
+          ))}
 
-            return SHOW_TRACK_DETAILS ? (
-              <Link key={track.id} href={track.href} className="group block">
-                {CardContent}
-              </Link>
-            ) : (
-              <div key={track.id} className="group block cursor-default">
-                {CardContent}
-              </div>
-            );
-          })}
+          {/* Bottom border for the last item */}
+          <div className="border-t border-white/5" />
         </div>
       </div>
     </section>

@@ -93,11 +93,17 @@ export default function CreateTeamPage() {
 
     if (insertError) {
       if (insertError.message.includes('team_name')) {
-        setError('This team name is already taken.');
+        setError('This team name is already taken. Please choose a different name.');
       } else if (insertError.message.includes('leader_id')) {
         setError('You have already created a team.');
+      } else if (
+        insertError.message.includes('payment') ||
+        insertError.message.includes('check_leader_payment') ||
+        insertError.message.includes('order_id')
+      ) {
+        setError('Payment verification failed. The mobile number you used to register on this website must match the mobile number you entered on the payment portal. If they don\'t match, team creation will fail. For help, contact ceam@manipal.edu');
       } else {
-        setError(insertError.message);
+        setError(`Something went wrong: ${insertError.message}. For help, contact ceam@manipal.edu`);
       }
       setLoading(false);
       return;

@@ -35,16 +35,38 @@ export default function PaymentSection({ userId }: { userId: string }) {
       return;
     }
 
+    // Transform receipt: users enter "recMITBR0061_..." but DB stores "RMITBR0061_..."
+    const dbRegId = trimmed.replace(/^rec/, 'R');
+
+    // Verify receipt exists in payments table with successful status
+    const { data: payment, error: paymentError } = await supabase
+      .from('payments')
+      .select('"Reg Id", "Payment Status"')
+      .eq('Reg Id', dbRegId)
+      .single();
+
+    if (paymentError || !payment) {
+      setError('This Receipt Number was not found in our records. Payments are verified every 12 hours — if you just paid, please try again later. For help, contact ceam@manipal.edu');
+      setLoading(false);
+      return;
+    }
+
+    if (payment["Payment Status"] !== 'Transaction Success') {
+      setError(`Payment status: "${payment["Payment Status"]}". Only successful transactions are accepted. For help, contact ceam@manipal.edu`);
+      setLoading(false);
+      return;
+    }
+
     const { error: updateError } = await supabase
       .from('profiles')
-      .update({ order_id: trimmed })
+      .update({ order_id: dbRegId })
       .eq('id', userId);
 
     if (updateError) {
       if (updateError.message.includes('duplicate') || updateError.message.includes('unique')) {
-        setError('This Receipt Number is already registered by another user.');
+        setError('This Receipt Number is already registered by another user. For help, contact ceam@manipal.edu');
       } else {
-        setError(updateError.message);
+        setError(`Something went wrong: ${updateError.message}. For help, contact ceam@manipal.edu`);
       }
       setLoading(false);
       return;
@@ -65,13 +87,19 @@ export default function PaymentSection({ userId }: { userId: string }) {
         <h2 className="text-lg font-bold text-white">Complete Payment</h2>
       </div>
 
+      {/* Mobile number warning */}
+      <div className="flex items-start gap-3 bg-red-500/10 border border-red-500/25 rounded-xl px-4 py-3 mb-1">
+        <span className="text-red-400 text-base mt-0.5">⚠</span>
+        <p className="text-xs text-gray-300 leading-relaxed">
+          <span className="text-red-400 font-semibold">Important:</span> The mobile number you used to register on this website <span className="text-white font-semibold">must match</span> the mobile number you enter on the payment portal. If they don&apos;t match, team creation will fail. For issues, contact{' '}
+          <a href="mailto:ceam@manipal.edu" className="text-[rgb(235,107,38)] underline">ceam@manipal.edu</a>
+        </p>
+      </div>
+
       {/* Payment link */}
       <div className="bg-white/[0.02] border border-white/10 rounded-xl p-5">
         <p className="text-sm text-gray-400 mb-4">
-          Click below to proceed to the payment portal.{' '}
-          <span className="text-[rgb(235,107,38)] font-medium">
-            Use the same phone number you registered with on this website.
-          </span>
+          Click below to proceed to the payment portal.
         </p>
         <a
           href={PAYMENT_URL}
