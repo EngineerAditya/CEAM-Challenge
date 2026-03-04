@@ -41,7 +41,7 @@ export default function PaymentSection({ userId }: { userId: string }) {
     // Verify receipt exists in payments table with successful status
     const { data: payment, error: paymentError } = await supabase
       .from('payments')
-      .select('"Reg Id", "Payment Status"')
+      .select('"Reg Id", "Payment Status", "Email", "Mobile"')
       .eq('Reg Id', dbRegId)
       .single();
 
@@ -53,6 +53,28 @@ export default function PaymentSection({ userId }: { userId: string }) {
 
     if (payment["Payment Status"] !== 'Transaction Success') {
       setError(`Payment status: "${payment["Payment Status"]}". Only successful transactions are accepted. For help, contact ceam@manipal.edu`);
+      setLoading(false);
+      return;
+    }
+
+    // Cross-check: user's email or mobile must match the payment record
+    const { data: profile, error: profileError } = await supabase
+      .from('profiles')
+      .select('email, mobile_number')
+      .eq('id', userId)
+      .single();
+
+    if (profileError || !profile) {
+      setError('Could not fetch your profile. Please try again.');
+      setLoading(false);
+      return;
+    }
+
+    const emailMatch = profile.email.toLowerCase() === (payment["Email"] as string).toLowerCase();
+    const mobileMatch = profile.mobile_number === payment["Mobile"];
+
+    if (!emailMatch && !mobileMatch) {
+      setError('Your email or mobile number does not match this payment record. The details you registered with must match the ones used on the payment portal. For help, contact ceam@manipal.edu');
       setLoading(false);
       return;
     }
