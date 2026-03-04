@@ -25,7 +25,7 @@ export default function PaymentInstructions({ className = "" }: { className?: st
 
         <div className="flex gap-3">
           <div className="shrink-0 w-5 h-5 rounded-full bg-[rgb(235,107,38)]/20 text-[rgb(235,107,38)] flex items-center justify-center font-bold text-xs mt-0.5">4</div>
-          <p><strong className="text-white">Receipt Number:</strong> After payment, you will receive a <span className="font-mono text-[rgb(235,107,38)]">Receipt Number</span> via email. You <span className="underline decoration-[rgb(235,107,38)] decoration-2">MUST ENTER</span> this correctly. Entering a wrong Receipt Number will result in disqualification.</p>
+          <p><strong className="text-white">Registration Number:</strong> After payment, you will receive a <span className="font-mono text-[rgb(235,107,38)]">Registration Number</span> via email (starts with <span className="font-mono text-gray-200">RMITBR0061_</span>). You <span className="underline decoration-[rgb(235,107,38)] decoration-2">MUST ENTER</span> this correctly. <span className="text-gray-400">This is NOT your college roll number / registration number.</span> Entering a wrong Registration Number will result in disqualification.</p>
         </div>
       </div>
     </div>

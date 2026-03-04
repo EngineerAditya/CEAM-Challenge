@@ -24,29 +24,26 @@ export default function PaymentSection({ userId }: { userId: string }) {
     const trimmed = orderId.trim();
 
     if (!trimmed) {
-      setError('Please enter your Receipt Number.');
+      setError('Please enter your Registration Number.');
       setLoading(false);
       return;
     }
 
-    if (!trimmed.startsWith('recMITBR0061_')) {
-      setError('Receipt Number must start with recMITBR0061_');
+    if (!trimmed.startsWith('RMITBR0061_')) {
+      setError('Registration Number must start with RMITBR0061_');
       setLoading(false);
       return;
     }
 
-    // Transform receipt: users enter "recMITBR0061_..." but DB stores "RMITBR0061_..."
-    const dbRegId = trimmed.replace(/^rec/, 'R');
-
-    // Verify receipt exists in payments table with successful status
+    // Verify registration number exists in payments table with successful status
     const { data: payment, error: paymentError } = await supabase
       .from('payments')
       .select('"Reg Id", "Payment Status", "Email", "Mobile"')
-      .eq('Reg Id', dbRegId)
+      .eq('Reg Id', trimmed)
       .single();
 
     if (paymentError || !payment) {
-      setError('This Receipt Number was not found in our records. Payments are verified every 12 hours — if you just paid, please try again later. For help, contact ceam@manipal.edu');
+      setError('This Registration Number was not found in our records. Payments are verified every 12 hours — if you just paid, please try again later. For help, contact ceam@manipal.edu');
       setLoading(false);
       return;
     }
@@ -81,12 +78,12 @@ export default function PaymentSection({ userId }: { userId: string }) {
 
     const { error: updateError } = await supabase
       .from('profiles')
-      .update({ order_id: dbRegId })
+      .update({ order_id: trimmed })
       .eq('id', userId);
 
     if (updateError) {
       if (updateError.message.includes('duplicate') || updateError.message.includes('unique')) {
-        setError('This Receipt Number is already registered by another user. For help, contact ceam@manipal.edu');
+        setError('This Registration Number is already registered by another user. For help, contact ceam@manipal.edu');
       } else {
         setError(`Something went wrong: ${updateError.message}. For help, contact ceam@manipal.edu`);
       }
@@ -137,17 +134,17 @@ export default function PaymentSection({ userId }: { userId: string }) {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div>
           <label className="block text-xs text-gray-400 uppercase tracking-widest mb-2 font-medium">
-            Receipt Number
+            Registration Number
           </label>
           <p className="text-xs text-gray-500 mb-3">
-            Enter the receipt number which is sent via email to you (starts with{' '}
-            <span className="text-gray-300 font-mono">recMITBR0061_</span>)
+            Enter the registration number sent via email — last row of the table (starts with{' '}
+            <span className="text-gray-300 font-mono">RMITBR0061_</span>)
           </p>
           <input
             type="text"
             value={orderId}
             onChange={(e) => setOrderId(e.target.value)}
-            placeholder="recMITBR0061_000XXX"
+            placeholder="RMITBR0061_000XXX"
             className="w-full px-4 py-3 bg-white/[0.02] border border-white/10 rounded-xl text-white text-sm outline-none focus:border-[rgb(235,107,38)]/50 transition-colors placeholder:text-gray-600 font-mono"
             required
           />
@@ -164,7 +161,7 @@ export default function PaymentSection({ userId }: { userId: string }) {
           disabled={loading}
           className="w-full py-3.5 bg-white hover:bg-gray-100 text-black font-bold text-sm uppercase tracking-widest rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-white/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
-          {loading ? 'Submitting...' : 'Submit Receipt Number'}
+          {loading ? 'Submitting...' : 'Submit Registration Number'}
         </button>
       </form>
     </div>
