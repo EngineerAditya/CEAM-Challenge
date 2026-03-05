@@ -101,9 +101,9 @@ export default function CreateTeamPage() {
         insertError.message.includes('check_leader_payment') ||
         insertError.message.includes('order_id')
       ) {
-        setError('Payment verification failed. The mobile number you used to register on this website must match the mobile number you entered on the payment portal. If they don\'t match, team creation will fail. For help, contact ceam@manipal.edu');
+        setError('Payment verification failed. The email or mobile number you used to register on this website must match the details used on the payment portal. For help, contact coeam.mitblr@manipal.edu');
       } else {
-        setError(`Something went wrong: ${insertError.message}. For help, contact ceam@manipal.edu`);
+        setError(`Something went wrong: ${insertError.message}. For help, contact coeam.mitblr@manipal.edu`);
       }
       setLoading(false);
       return;
