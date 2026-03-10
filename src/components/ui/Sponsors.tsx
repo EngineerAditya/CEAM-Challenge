@@ -17,6 +17,12 @@ const partners = [
     role: 'Industry Partner',
     url: 'https://www.harman.com/',
   },
+  {
+    name: 'Cybersecurity Partner',
+    logo: '/sponsor-logo/cyber.png',
+    role: 'Cybersecurity Partner',
+    url: 'https://www.michjosh.com/',
+  },
 ];
 
 export default function Sponsors() {
@@ -56,7 +62,7 @@ export default function Sponsors() {
         </div>
 
         {/* ── Partners Grid (Blueprint Style) ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10 mb-20">
           {partners.map((partner, i) => (
             <motion.div
               key={partner.name}
@@ -73,13 +79,13 @@ export default function Sponsors() {
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative h-24 w-56 md:h-32 md:w-80 group/logo"
+                  className={`relative ${partner.name === 'Cybersecurity Partner' ? 'h-36 w-72 md:h-44 md:w-96' : 'h-24 w-56 md:h-32 md:w-80'} group/logo`}
                 >
                   <Image
                     src={partner.logo}
                     alt={partner.name}
                     fill
-                    className="object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100 group-hover/logo:scale-105"
+                    className={`${partner.name === 'Cybersecurity Partner' ? 'object-contain scale-[1.2] group-hover:scale-[1.3] group-hover/logo:scale-[1.35]' : 'object-contain scale-90 group-hover:scale-100 group-hover/logo:scale-105'} opacity-60 group-hover:opacity-100 transition-all duration-500`}
                   />
                 </a>
 

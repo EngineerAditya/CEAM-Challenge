@@ -58,8 +58,13 @@ export default function CybersecurityTrackPage() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-px bg-[rgb(235,107,38)]" />
-              <span className="font-mono text-[10px] md:text-xs text-[rgb(235,107,38)] tracking-[0.4em] uppercase font-bold">
-                Track_03 // Vehicle Security
+              <span className="font-mono text-[10px] md:text-xs text-[rgb(235,107,38)] tracking-[0.4em] uppercase font-bold flex items-center gap-3">
+                Track_03 in Collaboration with
+                <img
+                  src="/sponsor-logo/cyber.png"
+                  alt="Cybersecurity Partner"
+                  className="h-12 md:h-16 w-auto"
+                />
               </span>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] text-white mb-8">

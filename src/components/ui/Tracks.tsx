@@ -45,8 +45,8 @@ const tracks = [
     title: 'Cybersecurity',
     num: '03',
     subtitle: 'Vehicle Security & Fleet Defense',
-    sponsorLogo: null,
-    sponsorAlt: '',
+    sponsorLogo: '/sponsor-logo/cyber-sec.png',
+    sponsorAlt: 'Cybersecurity Partner',
     description:
       'Protect self-driving cars from hackers. Find and stop cyber attacks on vehicle networks.',
     details:

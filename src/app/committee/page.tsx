@@ -42,6 +42,30 @@ const specialThanks = [
     context: 'Robotics Track — Industry Partner',
     linkedin: 'https://www.linkedin.com/in/josephine-selvarani-ruth/',
   },
+  {
+    name: 'Anish Cheriyan',
+    affiliation: 'Harman Automotive',
+    context: 'Industry Partner',
+    linkedin: 'https://www.linkedin.com/in/anishcheriyan?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+  },
+  {
+    name: 'Vijay Radhakrishnan',
+    affiliation: 'Harman Automotive',
+    context: 'Industry Partner',
+    linkedin: 'https://www.linkedin.com/in/vijay-radhakrishnan-44aba4?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+  },
+  {
+    name: 'Rakesh Ramesh',
+    affiliation: 'Harman Automotive',
+    context: 'Industry Partner',
+    linkedin: 'https://www.linkedin.com/in/rakesh-ramesh-k?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+  },
+  {
+    name: 'Micheal Joshuva',
+    affiliation: 'Cybersecurity',
+    context: 'Industry Partner',
+    linkedin: 'https://www.linkedin.com/in/micheal-joshuva/',
+  },
 ];
 
 // ─── Sub-components ────────────────────────────────────────────────────────────
