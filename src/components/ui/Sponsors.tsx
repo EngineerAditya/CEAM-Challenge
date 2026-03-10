@@ -19,7 +19,7 @@ const partners = [
   },
   {
     name: 'Cybersecurity Partner',
-    logo: '/sponsor-logo/cyber.png',
+    logo: '/sponsor-logo/cyber.svg',
     role: 'Cybersecurity Partner',
     url: 'https://www.michjosh.com/',
   },

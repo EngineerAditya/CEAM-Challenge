@@ -61,7 +61,7 @@ export default function CybersecurityTrackPage() {
               <span className="font-mono text-[10px] md:text-xs text-[rgb(235,107,38)] tracking-[0.4em] uppercase font-bold flex items-center gap-3">
                 Track_03 in Collaboration with
                 <img
-                  src="/sponsor-logo/cyber.png"
+                  src="/sponsor-logo/cyber.svg"
                   alt="Cybersecurity Partner"
                   className="h-12 md:h-16 w-auto"
                 />
