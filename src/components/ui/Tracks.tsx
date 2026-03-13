@@ -25,7 +25,7 @@ const tracks = [
   },
   {
     id: 'robotics',
-    title: 'Autonomous Navigation',
+    title: 'Robotics',
     num: '02',
     subtitle: 'In collaboration with ARTPARK, IISc',
     sponsorLogo: '/sponsor-logo/artpark.svg',

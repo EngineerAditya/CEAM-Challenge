@@ -43,13 +43,13 @@ export default function PaymentSection({ userId }: { userId: string }) {
       .single();
 
     if (paymentError || !payment) {
-      setError('This Registration Number was not found in our records. Payments are verified every 12 hours — if you just paid, please try again later. For help, contact ceam@manipal.edu');
+      setError('This Registration Number was not found in our records. Payments are verified every 12 hours — if you just paid, please try again later. For help, contact coeam.mitblr@manipal.edu');
       setLoading(false);
       return;
     }
 
     if (payment["Payment Status"] !== 'Transaction Success') {
-      setError(`Payment status: "${payment["Payment Status"]}". Only successful transactions are accepted. For help, contact ceam@manipal.edu`);
+      setError(`Payment status: "${payment["Payment Status"]}". Only successful transactions are accepted. For help, contact coeam.mitblr@manipal.edu`);
       setLoading(false);
       return;
     }
@@ -71,7 +71,7 @@ export default function PaymentSection({ userId }: { userId: string }) {
     const mobileMatch = profile.mobile_number === payment["Mobile"];
 
     if (!emailMatch && !mobileMatch) {
-      setError('Your email or mobile number does not match this payment record. The details you registered with must match the ones used on the payment portal. For help, contact ceam@manipal.edu');
+      setError('Your email or mobile number does not match this payment record. The details you registered with must match the ones used on the payment portal. For help, contact coeam.mitblr@manipal.edu');
       setLoading(false);
       return;
     }
@@ -83,9 +83,9 @@ export default function PaymentSection({ userId }: { userId: string }) {
 
     if (updateError) {
       if (updateError.message.includes('duplicate') || updateError.message.includes('unique')) {
-        setError('This Registration Number is already registered by another user. For help, contact ceam@manipal.edu');
+        setError('This Registration Number is already registered by another user. For help, contact coeam.mitblr@manipal.edu');
       } else {
-        setError(`Something went wrong: ${updateError.message}. For help, contact ceam@manipal.edu`);
+        setError(`Something went wrong: ${updateError.message}. For help, contact coeam.mitblr@manipal.edu`);
       }
       setLoading(false);
       return;
@@ -111,7 +111,7 @@ export default function PaymentSection({ userId }: { userId: string }) {
         <span className="text-red-400 text-base mt-0.5">⚠</span>
         <p className="text-xs text-gray-300 leading-relaxed">
           <span className="text-red-400 font-semibold">Important:</span> The mobile number you used to register on this website <span className="text-white font-semibold">must match</span> the mobile number you enter on the payment portal. If they don&apos;t match, team creation will fail. For issues, contact{' '}
-          <a href="mailto:ceam@manipal.edu" className="text-[rgb(235,107,38)] underline">ceam@manipal.edu</a>
+          <a href="mailto:coeam.mitblr@manipal.edu" className="text-[rgb(235,107,38)] underline">coeam.mitblr@manipal.edu</a>
         </p>
       </div>
 
