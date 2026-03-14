@@ -114,8 +114,8 @@ export default function CreateTeamPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-2xl">
+    <div className="min-h-screen bg-[#050505] flex justify-center px-4 pt-32 pb-12">
+      <div className="w-full max-w-2xl mt-8">
         {/* Card */}
         <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 backdrop-blur-xl">
           <h1
