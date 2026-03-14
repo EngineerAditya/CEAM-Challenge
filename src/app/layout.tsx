@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/utils/smooth-scroll";
 import Navbar from "@/components/ui/Navbar";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} noise-overlay antialiased`}
       >
+        <Analytics />
         {/* FIX: Navbar must be OUTSIDE SmoothScroll to stay fixed properly */}
         <Navbar />
 
