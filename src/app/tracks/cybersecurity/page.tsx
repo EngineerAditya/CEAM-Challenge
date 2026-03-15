@@ -35,7 +35,7 @@ export default function CybersecurityTrackPage() {
       {/* We use in-flow navigation for better compatibility with global nav */}
 
       {/* ── HERO SECTION ── */}
-      <header className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-white/5">
+      <header className="relative pt-32 pb-20 md:pt-48 md:pb-24 overflow-hidden border-b border-white/5">
         {/* Background FX */}
         <div className="absolute inset-0 z-0 opacity-20"
           style={{
@@ -72,152 +72,175 @@ export default function CybersecurityTrackPage() {
               <span className="text-[rgb(235,107,38)]">SECURITY.</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed font-light">
-              Defend the connected fleet. From <span className="text-white font-medium">intrusion detection</span> on standard datasets to countering complex threats in a live autonomous ecosystem.
+              Defend the connected fleet. Develop novel security mechanisms or detection frameworks addressing vulnerabilities in the <span className="text-white font-medium">Software-Defined Vehicle (SDV)</span> ecosystem.
             </p>
+            <div className="mt-8 p-6 bg-[rgb(235,107,38)]/[0.05] border border-[rgb(235,107,38)]/20 rounded-xl inline-block max-w-2xl">
+              <span className="font-mono text-[10px] text-[rgb(235,107,38)] uppercase tracking-widest flex items-center gap-2 mb-2">
+                <AlertTriangle size={14} /> Round 01 vs Round 02
+              </span>
+              <p className="text-sm text-gray-300">
+                <strong className="text-white">Round 01:</strong> Participants must write a detailed proposal addressing their chosen theme. <br />
+                <strong className="text-white mt-1 block">Round 02:</strong> Shortlisted teams will develop and build working prototypes during the offline hackathon.
+              </p>
+            </div>
           </motion.div>
         </div>
       </header>
 
-      {/* ── ROUND 1: ONLINE (DATASET DRIVEN) ── */}
-      <section className="py-24 border-b border-white/5 bg-white/[0.01]">
+      {/* ── THEMES ── */}
+      <section className="py-24">
         <div className="container mx-auto px-6 max-w-[1400px]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-5">
-              <span className="font-mono text-xs text-[rgb(235,107,38)] uppercase tracking-widest mb-4 block">Round 01 // Online Qualifier</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Dataset-Driven <br />Evaluation</h2>
-              <p className="text-gray-400 leading-relaxed mb-8">
-                To ensure objective scoring, the screening round focuses on quantitative metrics. Teams will be provided with standardized datasets containing vehicle network logs (CAN, Ethernet, V2X).
-              </p>
-              <div className="p-6 border-l-2 border-[rgb(235,107,38)] bg-[rgb(235,107,38)]/[0.03]">
-                <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-2">Deliverable</h4>
-                <p className="text-xs text-gray-500 font-mono uppercase leading-relaxed">
-                  Submit model inference results on a hidden test set. Rankings based on Accuracy, F1-Score, and False Positive Rate.
-                </p>
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Themes</h2>
+            <div className="w-16 h-1 bg-[rgb(235,107,38)]" />
+            <p className="text-gray-400 mt-4">Teams will select one of the following domains to design a problem statement, architecture, and proof-of-concept.</p>
+          </div>
+
+          <div className="flex flex-col gap-8">
+
+            {/* Theme 1 */}
+            <div className="group relative bg-white/[0.02] border border-white/5 hover:border-[rgb(235,107,38)]/50 transition-colors duration-500 overflow-hidden">
+              <div className="p-8 md:p-10 flex flex-col lg:flex-row gap-12">
+                <div className="flex-1 space-y-6">
+                  <div className="flex justify-between items-start">
+                    <div className="p-3 bg-[rgb(235,107,38)]/10 text-[rgb(235,107,38)] rounded-lg">
+                      <Terminal size={24} />
+                    </div>
+                    <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-widest">THEME 01</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Vehicle Control System Intrusion Detection</h3>
+                    <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
+                      <p>Software-defined vehicles rely on electronic control units and software-driven actuators to control steering, braking, torque delivery, and energy management. Malicious manipulation of control signals could compromise vehicle safety or propagate across fleets.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-1 lg:border-l border-white/5 lg:pl-12 space-y-8 flex flex-col justify-center">
+                  <div>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Focus Areas</span>
+                    <ul className="text-sm text-gray-300 leading-relaxed font-medium space-y-2">
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Detection of malicious actuator commands.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Intrusion detection in CAN/Ethernet vehicle networks.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Edge-AI anomaly detection models.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Distinguishing abnormal driving patterns from cyber attacks.</li>
+                    </ul>
+                  </div>
+                  <div className="pt-6 border-t border-white/5">
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-3">Example Directions</span>
+                    <ul className="text-sm text-gray-400 space-y-2">
+                      <li>- AI models detecting unauthorized torque/brake commands</li>
+                      <li>- Behavioral anomaly detection on actuator signals</li>
+                      <li>- Lightweight IDS deployed on vehicle control units</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="lg:col-span-1 hidden lg:block"></div>
+            {/* Theme 2 */}
+            <div className="group relative bg-white/[0.02] border border-white/5 hover:border-[rgb(235,107,38)]/50 transition-colors duration-500 overflow-hidden">
+              <div className="p-8 md:p-10 flex flex-col lg:flex-row gap-12">
+                <div className="flex-1 space-y-6">
+                  <div className="flex justify-between items-start">
+                    <div className="p-3 bg-[rgb(235,107,38)]/10 text-[rgb(235,107,38)] rounded-lg">
+                      <Server size={24} />
+                    </div>
+                    <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-widest">THEME 02</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Secure Vehicle–Infrastructure Interaction</h3>
+                    <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
+                      <p>Vehicles increasingly interact with external infrastructure such as EV charging stations, roadside units, and cloud services. These interactions introduce potential attack vectors including malware injection, identity spoofing, and billing fraud.</p>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#050505] p-8 border border-white/10 group hover:border-[rgb(235,107,38)]/30 transition-colors">
-                <Database className="text-[rgb(235,107,38)] mb-6" size={24} />
-                <h3 className="text-xl font-bold text-white mb-3">CAN Bus Logs</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  Detect injected anomalies (replay, spoofing) in high-frequency Controller Area Network traffic.
-                </p>
-              </div>
-              <div className="bg-[#050505] p-8 border border-white/10 group hover:border-[rgb(235,107,38)]/30 transition-colors">
-                <Shield className="text-[rgb(235,107,38)] mb-6" size={24} />
-                <h3 className="text-xl font-bold text-white mb-3">Intrusion Detection</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  Identify signature-less attacks using unsupervised learning or statistical modeling on provided datasets.
-                </p>
+                <div className="flex-1 lg:border-l border-white/5 lg:pl-12 space-y-8 flex flex-col justify-center">
+                  <div>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Focus Areas</span>
+                    <ul className="text-sm text-gray-300 leading-relaxed font-medium space-y-2">
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Secure authentication between EVs and charging stations.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Detection of malicious charging infrastructure.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Secure V2X communication mechanisms.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Identity protection and transaction security.</li>
+                    </ul>
+                  </div>
+                  <div className="pt-6 border-t border-white/5">
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-3">Example Directions</span>
+                    <ul className="text-sm text-gray-400 space-y-2">
+                      <li>- Secure Plug-and-Charge authentication frameworks</li>
+                      <li>- Detection of compromised charging stations</li>
+                      <li>- Cryptographic identity validation for EV infrastructure</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* Theme 3 */}
+            <div className="group relative bg-white/[0.02] border border-white/5 hover:border-[rgb(235,107,38)]/50 transition-colors duration-500 overflow-hidden">
+              <div className="p-8 md:p-10 flex flex-col lg:flex-row gap-12">
+                <div className="flex-1 space-y-6">
+                  <div className="flex justify-between items-start">
+                    <div className="p-3 bg-[rgb(235,107,38)]/10 text-[rgb(235,107,38)] rounded-lg">
+                      <FileCode size={24} />
+                    </div>
+                    <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-widest">THEME 03</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Secure Software Lifecycle & OTA Updates</h3>
+                    <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
+                      <p>Software-defined vehicles depend on frequent over-the-air updates to deliver new features, patches, and improvements. Ensuring the authenticity and integrity of these updates is critical to prevent large-scale compromise.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-1 lg:border-l border-white/5 lg:pl-12 space-y-8 flex flex-col justify-center">
+                  <div>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Focus Areas</span>
+                    <ul className="text-sm text-gray-300 leading-relaxed font-medium space-y-2">
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Cryptographic verification of OTA updates.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Blockchain-based update validation.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Secure firmware distribution frameworks.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Post-quantum update authentication.</li>
+                    </ul>
+                  </div>
+                  <div className="pt-6 border-t border-white/5">
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-3">Example Directions</span>
+                    <ul className="text-sm text-gray-400 space-y-2">
+                      <li>- Distributed ledger-based OTA verification</li>
+                      <li>- Secure firmware trust chains</li>
+                      <li>- Detection of tampered update packages</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ── ROUND 2: OFFLINE (CONCEPTUAL) ── */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-6 max-w-[1400px]">
-          <div className="mb-16 md:mb-24">
-            <span className="font-mono text-xs text-white uppercase tracking-widest mb-4 block">Round 02 // On-Site Finals</span>
-            <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">Advanced Threats</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Problem 1 */}
-            <div className="group border-t border-white/10 pt-8 hover:border-[rgb(235,107,38)] transition-colors duration-500">
-              <span className="font-mono text-2xl text-[rgb(235,107,38)]/50 group-hover:text-[rgb(235,107,38)] transition-colors mb-4 block">01</span>
-              <h3 className="text-2xl font-bold text-white mb-4">Cross-Domain Intrusion Detection</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                Software-Defined Autonomous Vehicles (SDAVs) expose new attack surfaces. Detect complex threats that span across IVN, OTA updates, and external interfaces.
-              </p>
-            </div>
-
-            {/* Problem 2 */}
-            <div className="group border-t border-white/10 pt-8 hover:border-[rgb(235,107,38)] transition-colors duration-500">
-              <span className="font-mono text-2xl text-[rgb(235,107,38)]/50 group-hover:text-[rgb(235,107,38)] transition-colors mb-4 block">02</span>
-              <h3 className="text-2xl font-bold text-white mb-4">Trust & Auth Validation</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                In a Connected Vehicle Ecosystem, trust is paramount. Validate the authenticity of V2X messages and ensure secure identity management for fleet operations.
-              </p>
-            </div>
-
-            {/* Problem 3 */}
-            <div className="group border-t border-white/10 pt-8 hover:border-[rgb(235,107,38)] transition-colors duration-500">
-              <span className="font-mono text-2xl text-[rgb(235,107,38)]/50 group-hover:text-[rgb(235,107,38)] transition-colors mb-4 block">03</span>
-              <h3 className="text-2xl font-bold text-white mb-4">Compromised Agent Detection</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                Detect if an autonomous agent (vehicle) has been subverted by an adversary. Analyze decision-making deviations and behavioral anomalies.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── EVALUATION CRITERIA ── */}
-      <section className="py-24 border-t border-white/5 bg-white/[0.01]">
-        <div className="container mx-auto px-6 max-w-[1400px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold text-white uppercase tracking-wider flex items-center gap-3">
-                <Terminal size={20} className="text-[rgb(235,107,38)]" />
-                Evaluation: Round 1
-              </h3>
-              <ul className="space-y-4 text-gray-500 font-mono text-xs uppercase tracking-wide">
-                <li className="flex justify-between border-b border-white/5 pb-2">
-                  <span>Metric 01</span>
-                  <span className="text-white">Classification Accuracy</span>
-                </li>
-                <li className="flex justify-between border-b border-white/5 pb-2">
-                  <span>Metric 02</span>
-                  <span className="text-white">F1-Score (Anomaly Class)</span>
-                </li>
-                <li className="flex justify-between border-b border-white/5 pb-2">
-                  <span>Constraint</span>
-                  <span className="text-white">Low False Positive Rate</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold text-white uppercase tracking-wider flex items-center gap-3">
-                <FileCode size={20} className="text-[rgb(235,107,38)]" />
-                Evaluation: Round 2
-              </h3>
-              <ul className="space-y-4 text-gray-500 font-mono text-xs uppercase tracking-wide">
-                <li className="flex justify-between border-b border-white/5 pb-2">
-                  <span>Metric 01</span>
-                  <span className="text-white">Innovation & Novelty</span>
-                </li>
-                <li className="flex justify-between border-b border-white/5 pb-2">
-                  <span>Metric 02</span>
-                  <span className="text-white">Real-time Performance</span>
-                </li>
-                <li className="flex justify-between border-b border-white/5 pb-2">
-                  <span>Context</span>
-                  <span className="text-white">Defense Depth & Robustness</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── CALL TO ACTION ── */}
+      {/* ── CALL TO ACTION / DOWNLOAD ── */}
       <section className="py-32 border-t border-white/5 bg-gradient-to-b from-transparent to-[rgb(235,107,38)]/[0.02]">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-8">Secure the <span className="text-[rgb(235,107,38)]">Network.</span></h2>
-
-          <div className="inline-flex flex-col items-center gap-4">
-            <button className="px-10 py-5 bg-white text-black font-bold text-sm tracking-[0.2em] uppercase hover:bg-[rgb(235,107,38)] hover:text-white transition-all duration-300"
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-8">Ready to <span className="text-[rgb(235,107,38)]">Submit?</span></h2>
+          <p className="text-gray-500 mb-12 max-w-2xl mx-auto">
+            Design your problem statement, architecture, and proposal. Download the official PPTX template below, fill in your idea for Round 01, and save to upload.
+          </p>
+          <div className="inline-flex flex-col md:flex-row items-center justify-center gap-6">
+            <a href="/ppt-format/cybersecurity.pptx" download className="px-10 py-5 bg-white text-black font-bold text-sm tracking-[0.2em] uppercase hover:bg-gray-200 transition-all duration-300 inline-block text-center"
               style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
-              Download Sample Datasets
-            </button>
-            <span className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.2em] mt-8">Training Data Release: Coming Soon</span>
+              Download PPTX Template
+            </a>
+            <label className="px-10 py-5 bg-[rgb(235,107,38)] text-white font-bold text-sm tracking-[0.2em] uppercase hover:bg-[rgb(235,107,38)]/90 transition-all duration-300 cursor-pointer text-center inline-block"
+              style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
+              <input type="file" accept=".pptx" className="hidden" />
+              Upload Proposal
+            </label>
           </div>
+          <span className="block mt-6 font-mono text-[10px] text-gray-600 uppercase tracking-[0.2em]">PPTX format only (Max 50MB)</span>
         </div>
       </section>
 
