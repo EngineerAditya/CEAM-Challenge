@@ -105,7 +105,7 @@ export default function AITrackPage() {
                       <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">FOCUS</strong> Behavioral AI & Temporal Modeling</p>
                       <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">PROBLEM STATEMENT</strong> In an L4 urban environment, reacting to where a pedestrian is isn't enough; the vehicle must predict where they will be. Participants must develop a model that predicts the future coordinates (next 3 seconds) of pedestrians and cyclists based on 2 seconds of past motion.</p>
                       <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">KEY FOCUS AREAS</strong> LSTMs/GRUs, Transformers, Social-Pooling layers, and Goal-conditioned prediction.</p>
-                      <p><strong className="text-[rgb(235,107,38)] font-mono text-xs block mb-1">DATASET (TBD)</strong> Argoverse 2 Forecasting or Waymo Open Motion Dataset.</p>
+                      <p><strong className="text-[rgb(235,107,38)] font-mono text-xs block mb-1">DATASET (will be released soon)</strong> nuScenes.</p>
                     </div>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ export default function AITrackPage() {
                       <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">FOCUS</strong> Semantic Perception & Edge Cases</p>
                       <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">PROBLEM STATEMENT</strong> Level 4 vehicles must identify "Free Space"; areas where the car can physically move; regardless of whether lane markings exist. This track focuses on segmenting the road vs. everything else (curbs, construction barriers, sidewalks) in complex urban settings.</p>
                       <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">KEY FOCUS AREAS</strong> Encoder-Decoder architectures (U-Net, DeepLabV3+), Real-time backbones (MobileNet/EfficientNet), and Loss functions for class imbalance.</p>
-                      <p><strong className="text-[rgb(235,107,38)] font-mono text-xs block mb-1">DATASET (TBD)</strong> Berkeley DeepDrive (BDD100K).</p>
+                      <p><strong className="text-[rgb(235,107,38)] font-mono text-xs block mb-1">DATASET (will be released soon)</strong> nuScenes.</p>
                     </div>
                   </div>
                 </div>
@@ -197,7 +197,7 @@ export default function AITrackPage() {
                       <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">FOCUS</strong> Geometric Transformation & Spatial Representation</p>
                       <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">PROBLEM STATEMENT</strong> Standard front-view cameras suffer from perspective distortion. For planning, L4 systems convert camera images into a 2D top-down "Occupancy Grid." Participants must transform front-facing camera features into a Bird's-Eye-View (BEV) map showing occupied (obstacles) and empty space.</p>
                       <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">KEY FOCUS AREAS</strong> Homography, Spatial Transformers, BEV-Former architectures, and Multi-View fusion.</p>
-                      <p><strong className="text-[rgb(235,107,38)] font-mono text-xs block mb-1">DATASET (TBD)</strong> nuScenes.</p>
+                      <p><strong className="text-[rgb(235,107,38)] font-mono text-xs block mb-1">DATASET (will be released soon)</strong> nuScenes.</p>
                     </div>
                   </div>
                 </div>
