@@ -106,7 +106,7 @@ export default function Tracks() {
                 {/* Hover glow accent */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[rgb(235,107,38)]/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                <div className="relative z-10 py-12 md:py-16">
+                <div className="relative z-10 py-14 md:py-20 px-6 md:px-12">
                   <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
 
                     {/* ── Left: Number + Title + Description ── */}
@@ -187,9 +187,8 @@ export default function Tracks() {
 
                       {/* CTA */}
                       <div className="flex items-center justify-between">
-                        <span className="flex items-center gap-2 text-xs text-gray-600 font-medium">
-                          <Lock size={14} />
-                          <span>More Details On March 15th</span>
+                        <span className="flex items-center gap-2 text-xs text-[rgb(235,107,38)] font-medium">
+                          <span>Details Revealed</span>
                         </span>
                         <span className="flex items-center gap-2 text-sm text-gray-600 group-hover:text-[rgb(235,107,38)] font-medium transition-colors duration-300">
                           Explore Track
