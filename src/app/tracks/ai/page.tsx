@@ -234,17 +234,19 @@ export default function AITrackPage() {
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-8">Ready to <span className="text-[rgb(235,107,38)]">Submit?</span></h2>
           <p className="text-gray-500 mb-12 max-w-2xl mx-auto">
-            Upload the relevant files (Jupyter Notebooks, scripts, or model architecture documents) you used to develop your solution. Ensure your code is organized and well-documented.
+            Design your problem statement, architecture, and proposal. Download the official PPTX template below, fill in your idea for Round 01, and save to upload.
           </p>
-          <div className="inline-flex flex-col items-center gap-4">
-            {/* Simple input type file for generic upload, styled as a button */}
-            <label className="px-10 py-5 bg-[rgb(235,107,38)] text-white font-bold text-sm tracking-[0.2em] uppercase hover:bg-[rgb(235,107,38)]/90 transition-all duration-300 cursor-pointer text-center inline-block"
+          <div className="inline-flex flex-col md:flex-row items-center justify-center gap-6">
+            <a href="/ppt-format/aicomputervision.pptx" download className="px-10 py-5 bg-white text-black font-bold text-sm tracking-[0.2em] uppercase hover:bg-gray-200 transition-all duration-300 inline-block text-center"
               style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
-              <input type="file" multiple className="hidden" />
-              Upload Model Files
-            </label>
-            <span className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.2em]">ZIP files preferred (Max 100MB)</span>
+              Download PPTX Template
+            </a>
+            <div className="px-10 py-5 bg-white/5 text-gray-400 font-bold text-sm tracking-[0.2em] uppercase text-center inline-block cursor-not-allowed border border-white/10"
+              style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
+              Submissions Opening Soon
+            </div>
           </div>
+          <span className="block mt-6 font-mono text-[10px] text-gray-600 uppercase tracking-[0.2em]">PPTX format only (Max 10MB)</span>
         </div>
       </section>
 

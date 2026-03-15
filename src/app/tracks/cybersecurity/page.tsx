@@ -234,13 +234,12 @@ export default function CybersecurityTrackPage() {
               style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
               Download PPTX Template
             </a>
-            <label className="px-10 py-5 bg-[rgb(235,107,38)] text-white font-bold text-sm tracking-[0.2em] uppercase hover:bg-[rgb(235,107,38)]/90 transition-all duration-300 cursor-pointer text-center inline-block"
+            <div className="px-10 py-5 bg-white/5 text-gray-400 font-bold text-sm tracking-[0.2em] uppercase text-center inline-block cursor-not-allowed border border-white/10"
               style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
-              <input type="file" accept=".pptx" className="hidden" />
-              Upload Proposal
-            </label>
+              Submissions Opening Soon
+            </div>
           </div>
-          <span className="block mt-6 font-mono text-[10px] text-gray-600 uppercase tracking-[0.2em]">PPTX format only (Max 50MB)</span>
+          <span className="block mt-6 font-mono text-[10px] text-gray-600 uppercase tracking-[0.2em]">PPTX format only (Max 10MB)</span>
         </div>
       </section>
 
