@@ -71,56 +71,11 @@ export default function AITrackPage() {
               <span className="text-[rgb(235,107,38)]">MOBILITY.</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed font-light">
-              Reimagine the connected cockpit. From <span className="text-white font-medium">network-aware routing</span> to <span className="text-white font-medium">predictive safety</span>, build the next generation of automotive experiences.
+              Reimagine the connected cockpit. Build advanced AI models for <span className="text-white font-medium">trajectory prediction</span>, <span className="text-white font-medium">drivable space segmentation</span>, and <span className="text-white font-medium">Bird's-Eye-View mapping</span>.
             </p>
           </motion.div>
         </div>
       </header>
-
-      {/* ── TIMELINE SECTION ── */}
-      <section className="py-12 border-y border-white/5 bg-white/[0.01]">
-        <div className="container mx-auto px-6 max-w-[1400px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-
-            {/* Round 1 */}
-            <div className="flex flex-col md:flex-row gap-6 items-start group">
-              <div className="p-4 bg-[rgb(235,107,38)]/10 text-[rgb(235,107,38)] rounded-xl shrink-0 group-hover:scale-110 transition-transform">
-                <Clock size={32} />
-              </div>
-              <div>
-                <span className="font-mono text-[10px] tracking-[0.2em] text-gray-500 uppercase mb-2 block">Online Phase</span>
-                <h3 className="text-xl font-bold text-white mb-2">Round 1: Ideation & Architecture</h3>
-                <p className="text-sm text-gray-400 mb-4 leading-relaxed">
-                  Submit your conceptual framework, proposed architecture, and execution plan for tackling the Harman Automotive challenge.
-                </p>
-                <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-md">
-                  <span className="w-2 h-2 rounded-full bg-[rgb(235,107,38)] animate-pulse" />
-                  <span className="font-mono text-xs text-white">Deadline: March 31, 2026</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Round 2 */}
-            <div className="flex flex-col md:flex-row gap-6 items-start group">
-              <div className="p-4 bg-white/5 text-white rounded-xl shrink-0 group-hover:bg-[rgb(235,107,38)]/10 group-hover:text-[rgb(235,107,38)] transition-colors">
-                <Calendar size={32} />
-              </div>
-              <div>
-                <span className="font-mono text-[10px] tracking-[0.2em] text-gray-500 uppercase mb-2 block">Offline Phase</span>
-                <h3 className="text-xl font-bold text-white mb-2">Round 2: The Hackathon</h3>
-                <p className="text-sm text-gray-400 mb-4 leading-relaxed flex flex-col gap-1">
-                  <span>Intensive in-person prototyping and development.</span>
-                  <span className="flex items-center gap-1 text-gray-300 mt-1"><MapPin size={14} /> Manipal Institute of Technology, BLR</span>
-                </p>
-                <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-md">
-                  <span className="font-mono text-xs text-white">Dates: 17, 18, 19 April 2026</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* ── PROBLEM STATEMENTS ── */}
       <section className="py-24">
@@ -142,13 +97,15 @@ export default function AITrackPage() {
                     <div className="p-3 bg-[rgb(235,107,38)]/10 text-[rgb(235,107,38)] rounded-lg">
                       <Signal size={24} />
                     </div>
-                    <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-widest">PROBLEM STATEMENT 01</span>
+                    <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-widest">TRACK 1</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Cellular Network-Aware Routing</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Intent & Trajectory Prediction</h3>
                     <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
-                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">CONTEXT</strong> Most routing optimizes for time/distance, overlooking cellular reliability that affects navigation, SOS, and connected features. Coverage varies with tower density, terrain, and weather, making some routes more dependable than others.</p>
-                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">SIGNIFICANCE</strong> Reduces drop-outs and failures for apps that rely on live data (navigation, telematics, ride-hailing). Benefits Emergency Vehicles & fleet use cases and improves user trust in connected mobility.</p>
+                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">FOCUS</strong> Behavioral AI & Temporal Modeling</p>
+                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">PROBLEM STATEMENT</strong> In an L4 urban environment, reacting to where a pedestrian is isn't enough; the vehicle must predict where they will be. Participants must develop a model that predicts the future coordinates (next 3 seconds) of pedestrians and cyclists based on 2 seconds of past motion.</p>
+                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">KEY FOCUS AREAS</strong> LSTMs/GRUs, Transformers, Social-Pooling layers, and Goal-conditioned prediction.</p>
+                      <p><strong className="text-[rgb(235,107,38)] font-mono text-xs block mb-1">DATASET (will be released soon)</strong> nuScenes.</p>
                     </div>
                   </div>
                 </div>
@@ -156,17 +113,19 @@ export default function AITrackPage() {
                 {/* Right side: Challenge & Outcomes */}
                 <div className="flex-1 lg:border-l border-white/5 lg:pl-12 space-y-8 flex flex-col justify-center">
                   <div>
-                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Specific Challenge</span>
-                    <p className="text-sm text-gray-300 leading-relaxed font-medium">
-                      Build a routing prototype that scores and visualizes connectivity along candidate routes. Let users compare fastest vs most-connected paths with a simple weighting control.
-                    </p>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Objectives</span>
+                    <ul className="text-sm text-gray-300 leading-relaxed font-medium space-y-2">
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Process temporal sequence data (coordinates/velocity).</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Account for "Social Context" (how pedestrians avoid each other).</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Generate a multi-modal prediction (e.g., the 3 most likely paths).</li>
+                    </ul>
                   </div>
                   <div className="pt-6 border-t border-white/5">
-                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-3">Expected Outcomes</span>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-3">Expected Outcomes & Metrics</span>
                     <ul className="text-sm text-gray-400 space-y-2">
-                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Map UI with connectivity heat overlays and a route Connectivity Score.</li>
-                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Side-by-side comparison of two routes with a connectivity-vs-ETA trade-off slider.</li>
-                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Brief write-up of assumptions/heuristics and data sources used.</li>
+                      <li className="flex flex-col gap-1 mb-2"><strong className="text-white">Outcome:</strong> A model that inputs a history of (x, y) coordinates and outputs a sequence of predicted future (x, y) points.</li>
+                      <li className="flex flex-col gap-1"><strong className="text-white">ADE:</strong> Mean Euclidean distance between predicted and ground truth points.</li>
+                      <li className="flex flex-col gap-1"><strong className="text-white">FDE:</strong> Distance between the final predicted point and the actual final position.</li>
                     </ul>
                   </div>
                 </div>
@@ -182,15 +141,17 @@ export default function AITrackPage() {
                 <div className="flex-1 space-y-6">
                   <div className="flex justify-between items-start">
                     <div className="p-3 bg-[rgb(235,107,38)]/10 text-[rgb(235,107,38)] rounded-lg">
-                      <Bell size={24} />
+                      <Map size={24} />
                     </div>
-                    <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-widest">PROBLEM STATEMENT 02</span>
+                    <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-widest">TRACK 2</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Geo-Deferred Notifications</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Real-time Drivable Space Segmentation</h3>
                     <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
-                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">CONTEXT</strong> Many alerts are non-urgent and can be delivered later without harming user experience. Sending during poor coverage wastes data, fails often, and distracts users from important notifications.</p>
-                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">SIGNIFICANCE</strong> Cuts failed deliveries/retries and saves data while improving perceived responsiveness. Demonstrates a practical step toward context-aware connected services.</p>
+                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">FOCUS</strong> Semantic Perception & Edge Cases</p>
+                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">PROBLEM STATEMENT</strong> Level 4 vehicles must identify "Free Space"; areas where the car can physically move; regardless of whether lane markings exist. This track focuses on segmenting the road vs. everything else (curbs, construction barriers, sidewalks) in complex urban settings.</p>
+                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">KEY FOCUS AREAS</strong> Encoder-Decoder architectures (U-Net, DeepLabV3+), Real-time backbones (MobileNet/EfficientNet), and Loss functions for class imbalance.</p>
+                      <p><strong className="text-[rgb(235,107,38)] font-mono text-xs block mb-1">DATASET (will be released soon)</strong> nuScenes.</p>
                     </div>
                   </div>
                 </div>
@@ -198,17 +159,19 @@ export default function AITrackPage() {
                 {/* Right side: Challenge & Outcomes */}
                 <div className="flex-1 lg:border-l border-white/5 lg:pl-12 space-y-8 flex flex-col justify-center">
                   <div>
-                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Specific Challenge</span>
-                    <p className="text-sm text-gray-300 leading-relaxed font-medium">
-                      Build a client/server or client-only prototype that queues messages and releases them in high-coverage zones along a trip. Support simple priority rules so urgent items bypass deferral.
-                    </p>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Objectives</span>
+                    <ul className="text-sm text-gray-300 leading-relaxed font-medium space-y-2">
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Perform pixel-wise semantic segmentation of the drivable area.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Ensure high-frequency performance (inference speed is critical).</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Handle "boundary" cases like road-to-grass transitions or water puddles.</li>
+                    </ul>
                   </div>
                   <div className="pt-6 border-t border-white/5">
-                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-3">Expected Outcomes</span>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-3">Expected Outcomes & Metrics</span>
                     <ul className="text-sm text-gray-400 space-y-2">
-                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> UI showing pending vs delivered notifications with timestamps.</li>
-                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Simulated "drive" where non-urgent items release only inside green (good-signal) segments.</li>
-                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> A simple decision-logic diagram or ruleset explaining defer/deliver behavior.</li>
+                      <li className="flex flex-col gap-1 mb-2"><strong className="text-white">Outcome:</strong> A real-time inference pipeline that outputs a binary or multi-class mask representing "Drivable" vs. "Non-Drivable."</li>
+                      <li className="flex flex-col gap-1"><strong className="text-white">mIoU:</strong> The primary accuracy metric for segmentation.</li>
+                      <li className="flex flex-col gap-1"><strong className="text-white">FPS:</strong> To ensure the model is viable for real-time hardware.</li>
                     </ul>
                   </div>
                 </div>
@@ -224,15 +187,17 @@ export default function AITrackPage() {
                 <div className="flex-1 space-y-6">
                   <div className="flex justify-between items-start">
                     <div className="p-3 bg-[rgb(235,107,38)]/10 text-[rgb(235,107,38)] rounded-lg">
-                      <AlertTriangle size={24} />
+                      <Navigation size={24} />
                     </div>
-                    <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-widest">PROBLEM STATEMENT 03</span>
+                    <span className="font-mono text-xs text-[rgb(235,107,38)] tracking-widest">TRACK 3</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Wrong-Way Driver Detection</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Bird’s-Eye-View (BEV) 2D Occupancy</h3>
                     <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
-                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">CONTEXT</strong> Wrong-way detection today is limited to entry and exit of freeways using ramp cameras. But wrong way events can occur not just highways but also on urban grids, undivided roads, etc. There are also temporary situations like road works which cause wrong way diversions.</p>
-                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">SIGNIFICANCE</strong> Enables timely alerts to surrounding road users and connected mobility apps, reducing risk of collisions in dense, chaotic environments. Provides a foundation for fleet safety, rider apps, micromobility, and campus-security systems without needing expensive sensors.</p>
+                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">FOCUS</strong> Geometric Transformation & Spatial Representation</p>
+                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">PROBLEM STATEMENT</strong> Standard front-view cameras suffer from perspective distortion. For planning, L4 systems convert camera images into a 2D top-down "Occupancy Grid." Participants must transform front-facing camera features into a Bird's-Eye-View (BEV) map showing occupied (obstacles) and empty space.</p>
+                      <p><strong className="text-white font-mono tracking-widest text-xs block mb-1">KEY FOCUS AREAS</strong> Homography, Spatial Transformers, BEV-Former architectures, and Multi-View fusion.</p>
+                      <p><strong className="text-[rgb(235,107,38)] font-mono text-xs block mb-1">DATASET (will be released soon)</strong> nuScenes.</p>
                     </div>
                   </div>
                 </div>
@@ -240,17 +205,19 @@ export default function AITrackPage() {
                 {/* Right side: Challenge & Outcomes */}
                 <div className="flex-1 lg:border-l border-white/5 lg:pl-12 space-y-8 flex flex-col justify-center">
                   <div>
-                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Specific Challenge</span>
-                    <p className="text-sm text-gray-300 leading-relaxed font-medium">
-                      Build a lightweight system that identifies external vehicles moving opposite to the allowed direction using heading vs. road geometry from open-data sources (e.g., OSM). Demonstrate detection using simulated multi-vehicle GPS traces, including injected wrong-way intruders.
-                    </p>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Objectives</span>
+                    <ul className="text-sm text-gray-300 leading-relaxed font-medium space-y-2">
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Implement an "Image-to-BEV" transformation (e.g., Inverse Perspective Mapping or View Transformers).</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Map 3D obstacles (cars, poles) onto a 2D ground plane.</li>
+                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Maintain spatial consistency (objects shouldn't "stretch" in the BEV view).</li>
+                    </ul>
                   </div>
                   <div className="pt-6 border-t border-white/5">
-                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-3">Expected Outcomes</span>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-3">Expected Outcomes & Metrics</span>
                     <ul className="text-sm text-gray-400 space-y-2">
-                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> A visual playback showing normal vehicles vs wrong-way intruders with clear danger indicators.</li>
-                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> A concise logic model (bearing comparison, road direction, noise handling) explaining how non-ego wrong-way motion is flagged.</li>
-                      <li className="flex items-start gap-2"><span className="text-[rgb(235,107,38)] mt-0.5">▹</span> Short analysis of potential false positives (e.g., temporary diversions) and simple mitigation heuristics.</li>
+                      <li className="flex flex-col gap-1 mb-2"><strong className="text-white">Outcome:</strong> A 2D grid/heatmap where each pixel represents a fixed area (e.g., 10cm x 10cm) and its probability of being occupied.</li>
+                      <li className="flex flex-col gap-1"><strong className="text-white">Occupancy IoU:</strong> How well the top-down occupancy matches the ground truth derived from LiDAR.</li>
+                      <li className="flex flex-col gap-1"><strong className="text-white">Distance-weighted Error:</strong> Errors closer to the ego-vehicle are penalized more heavily.</li>
                     </ul>
                   </div>
                 </div>
@@ -265,17 +232,21 @@ export default function AITrackPage() {
       {/* ── CALL TO ACTION ── */}
       <section className="py-32 border-t border-white/5 bg-gradient-to-b from-transparent to-[rgb(235,107,38)]/[0.02]">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-8">Ready to <span className="text-[rgb(235,107,38)]">Build?</span></h2>
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-8">Ready to <span className="text-[rgb(235,107,38)]">Submit?</span></h2>
           <p className="text-gray-500 mb-12 max-w-2xl mx-auto">
-            Review the problem statement carefully and prepare your proposal. Submissions opening soon.
+            Design your problem statement, architecture, and proposal. Download the official PPTX template below, fill in your idea for Round 01, and save to upload.
           </p>
-          <div className="inline-flex flex-col items-center gap-4">
-            <button className="px-10 py-5 bg-white text-black font-bold text-sm tracking-[0.2em] uppercase hover:bg-[rgb(235,107,38)] hover:text-white transition-all duration-300"
+          <div className="inline-flex flex-col md:flex-row items-center justify-center gap-6">
+            <a href="/ppt-format/aicomputervision.pptx" download className="px-10 py-5 bg-white text-black font-bold text-sm tracking-[0.2em] uppercase hover:bg-gray-200 transition-all duration-300 inline-block text-center"
               style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
-              Download Rulebook (Coming Soon)
-            </button>
-            <span className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.2em]">Check website for updates</span>
+              Download PPTX Template
+            </a>
+            <div className="px-10 py-5 bg-white/5 text-gray-400 font-bold text-sm tracking-[0.2em] uppercase text-center inline-block cursor-not-allowed border border-white/10"
+              style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>
+              Submissions Opening Soon
+            </div>
           </div>
+          <span className="block mt-6 font-mono text-[10px] text-gray-600 uppercase tracking-[0.2em]">PPTX format only (Max 10MB)</span>
         </div>
       </section>
 

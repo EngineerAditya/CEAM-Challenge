@@ -1,1 +1,1 @@
-export const SHOW_TRACK_DETAILS = false;
+export const SHOW_TRACK_DETAILS = true;
